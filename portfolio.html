@@ -94,6 +94,13 @@
   /* barras do mini-gráfico de leads crescem quando o card é revelado (transição duration-1000 do Site 1) */
   .svc-bar { height: 12%; transition: height 1s cubic-bezier(.16,1,.3,1); }
   .animate-fade-in-up .svc-bar { height: var(--h); }
+  /* hover dos cards de serviço: fundo neutro por padrão e o mesmo azul do card N8N sob o cursor */
+  .svc-card { transition: background-color .7s cubic-bezier(.4,0,.2,1), border-color .7s cubic-bezier(.4,0,.2,1), box-shadow .7s cubic-bezier(.4,0,.2,1); }
+  .svc-card:hover { background-color: rgba(24,24,27,.95); border-color: rgba(99,102,241,.3); box-shadow: 0 0 30px rgba(99,102,241,.15); }
+  .svc-topbar { opacity: 0; transition: opacity .7s cubic-bezier(.4,0,.2,1); }
+  .svc-card:hover .svc-topbar { opacity: 1; }
+  .svc-cta { transition: background-color .5s cubic-bezier(.4,0,.2,1), border-color .5s cubic-bezier(.4,0,.2,1), box-shadow .5s cubic-bezier(.4,0,.2,1); }
+  .svc-card:hover .svc-cta { background-color: #6366F1; border-color: #6366F1; box-shadow: 0 0 15px rgba(99,102,241,.3); }
   @media (prefers-reduced-motion: reduce) {
     .svc-bar { height: var(--h) !important; transition: none !important; }
   }
@@ -572,8 +579,9 @@
 
     <!-- 01 · Social Media -->
     <div class="reveal-scroll" data-reveal-delay="0">
-      <article class="group relative h-full p-3 rounded-[24px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 hover:border-white/10 transition-colors duration-700 flex flex-col shadow-2xl shadow-black/80 overflow-hidden">
-        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#6366F1]/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+      <article class="svc-card group relative h-full p-3 rounded-[24px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col shadow-2xl shadow-black/80 overflow-hidden">
+        <div aria-hidden="true" class="svc-topbar absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#6366F1] to-transparent"></div>
+        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#6366F1]/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
         <!-- elementos flutuantes: redes sociais, post e carrossel -->
         <div aria-hidden="true" class="relative h-52 overflow-hidden rounded-[14px] border border-white/5 bg-black/40">
@@ -657,15 +665,15 @@
               </ul>
             </div>
           </div>
-          <a class="mt-8 block w-full py-3 rounded-lg bg-white/5 border border-white/10 text-center text-white text-sm tracking-tight hover:bg-white/10 transition-colors" href="#contato">Quero esse serviço</a>
+          <a class="svc-cta mt-8 block w-full py-3 rounded-lg bg-white/5 border border-white/10 text-center text-white text-sm tracking-tight" href="#contato">Quero esse serviço</a>
         </div>
       </article>
     </div>
 
     <!-- 02 · Automação (card em destaque, como o central da pricing do Site 2) -->
     <div class="reveal-scroll" data-reveal-delay="120">
-      <article class="group relative h-full p-3 rounded-[24px] bg-[#18181B]/95 backdrop-blur-xl border border-[#6366F1]/30 flex flex-col overflow-hidden lg:-translate-y-4 shadow-[0_0_30px_rgba(99,102,241,0.15)]">
-        <div aria-hidden="true" class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#6366F1] to-transparent"></div>
+      <article class="svc-card group relative h-full p-3 rounded-[24px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col shadow-2xl shadow-black/80 overflow-hidden">
+        <div aria-hidden="true" class="svc-topbar absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#6366F1] to-transparent"></div>
         <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#6366F1]/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
         <!-- elementos flutuantes: WhatsApp e e-mail conectados ao N8N, saídas do fluxo -->
@@ -724,7 +732,7 @@
           <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
             <div class="flex items-center gap-3">
               <iconify-icon class="text-xl text-[#6366F1]" icon="solar:cpu-linear" aria-hidden="true"></iconify-icon>
-              <span class="whitespace-nowrap text-xs font-mono tracking-widest text-[#6366F1] uppercase">02 · Automação · N8N</span>
+              <span class="whitespace-nowrap text-xs font-mono tracking-widest text-zinc-500 uppercase">02 · Automação · N8N</span>
             </div>
             <span class="px-2 py-0.5 rounded border border-[#6366F1]/20 bg-[#6366F1]/10 text-[10px] font-mono text-white tracking-widest uppercase">Sob medida</span>
           </div>
@@ -750,15 +758,16 @@
               <p class="text-[13px] leading-relaxed text-white/70">Mais agilidade, atendimento padronizado e menos trabalho manual repetitivo para a sua equipe.</p>
             </div>
           </div>
-          <a class="mt-8 block w-full py-3 rounded-lg bg-[#6366F1] text-center text-white text-sm tracking-tight hover:bg-[#6366F1]/90 transition-colors shadow-[0_0_15px_rgba(99,102,241,0.3)]" href="#contato">Quero automatizar</a>
+          <a class="svc-cta mt-8 block w-full py-3 rounded-lg bg-white/5 border border-white/10 text-center text-white text-sm tracking-tight" href="#contato">Quero automatizar</a>
         </div>
       </article>
     </div>
 
     <!-- 03 · Tráfego pago -->
     <div class="reveal-scroll" data-reveal-delay="240">
-      <article class="group relative h-full p-3 rounded-[24px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 hover:border-white/10 transition-colors duration-700 flex flex-col shadow-2xl shadow-black/80 overflow-hidden">
-        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#6366F1]/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+      <article class="svc-card group relative h-full p-3 rounded-[24px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col shadow-2xl shadow-black/80 overflow-hidden">
+        <div aria-hidden="true" class="svc-topbar absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#6366F1] to-transparent"></div>
+        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#6366F1]/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
         <!-- elementos flutuantes: leads por dia, funil, clique, engajamento, custo por lead -->
         <div aria-hidden="true" class="relative h-52 overflow-hidden rounded-[14px] border border-white/5 bg-black/40">
@@ -841,7 +850,7 @@
               </ul>
             </div>
           </div>
-          <a class="mt-8 block w-full py-3 rounded-lg bg-white/5 border border-white/10 text-center text-white text-sm tracking-tight hover:bg-white/10 transition-colors" href="#contato">Quero gerar leads</a>
+          <a class="svc-cta mt-8 block w-full py-3 rounded-lg bg-white/5 border border-white/10 text-center text-white text-sm tracking-tight" href="#contato">Quero gerar leads</a>
         </div>
       </article>
     </div>
