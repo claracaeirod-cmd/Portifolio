@@ -288,7 +288,7 @@
 <!-- experiência (Site 2: cabeçalho + grade da seção architecture, cards do node-cluster, lista "Nós Ativos";
      Site 1: grade de logos da tools-section, floatBubble, glass-dark e fade-in-up no scroll) -->
 <section aria-labelledby="exp-title" class="relative z-20 w-full max-w-6xl mx-auto px-4 pt-24 pb-24 flex flex-col gap-12 border-t border-white/10 text-white scroll-mt-28" id="experiencia">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-12 items-center">
     <div class="reveal-scroll" data-reveal-delay="0">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 mb-8">
         <span class="w-1.5 h-1.5 rounded-full bg-[#6366F1] animate-pulse shadow-[0_0_8px_rgba(99,102,241,0.8)]"></span>
@@ -299,13 +299,13 @@
     </div>
 
     <!-- logos flutuantes: cards do node-cluster (Site 2) + floatBubble (Site 1) + parallax de scroll e de mouse -->
-    <div aria-label="Instituições e experiências" class="relative h-[360px] md:h-[400px]" id="logoCluster" role="list">
+    <div aria-label="Instituições, experiências e ferramentas" class="relative h-[620px] md:h-[510px]" id="logoCluster" role="list">
       <div aria-hidden="true" class="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div class="w-[320px] h-[320px] rounded-full opacity-40 blur-[80px]" style="background: radial-gradient(circle at center, #6366F1, transparent 60%);"></div>
       </div>
       <canvas aria-hidden="true" class="absolute inset-0 w-full h-full opacity-80" id="canvas-core" style="touch-action: none;"></canvas>
 
-      <div class="absolute left-[2%] top-[4%] md:left-[6%]" data-scroll-speed="-46" role="listitem">
+      <div class="absolute left-0 top-0" data-scroll-speed="-40" role="listitem">
         <div data-depth="14">
           <div class="float-bubble" style="animation: 2s ease-in-out 0s infinite alternate none running floatBubble;">
             <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-white/10 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
@@ -317,7 +317,7 @@
           </div>
         </div>
       </div>
-      <div class="absolute right-[2%] top-[12%] md:right-[4%]" data-scroll-speed="-22" role="listitem">
+      <div class="absolute right-0 top-[3%]" data-scroll-speed="-24" role="listitem">
         <div data-depth="24">
           <div class="float-bubble" style="animation: 2.6s ease-in-out 0.2s infinite alternate none running floatBubble;">
             <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-[#6366F1]/30 via-white/5 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
@@ -329,25 +329,60 @@
           </div>
         </div>
       </div>
-      <div class="absolute left-[1%] bottom-[6%] md:left-[14%]" data-scroll-speed="30" role="listitem">
-        <div data-depth="30">
-          <div class="float-bubble" style="animation: 2.3s ease-in-out 0.1s infinite alternate none running floatBubble;">
-            <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-white/10 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
-              <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
-                <img alt="Logo Stylee" class="logo-mono h-8 md:h-9 w-auto max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" src="assets/experiencia/logo-stylee.png"/>
-                <span class="text-[10px] md:text-xs font-mono tracking-widest uppercase text-white/60 group-hover:text-white transition-colors duration-300">Stylee</span>
+      <div class="absolute left-1/2 top-[25%] -translate-x-1/2 md:left-0 md:top-[35%] md:translate-x-0" role="listitem">
+        <div data-scroll-speed="-8">
+          <div data-depth="30">
+            <div class="float-bubble" style="animation: 2.3s ease-in-out 0.1s infinite alternate none running floatBubble;">
+              <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-white/10 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
+                <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
+                  <img alt="Logo Stylee" class="logo-mono h-8 md:h-9 w-auto max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" src="assets/experiencia/logo-stylee.png"/>
+                  <span class="text-[10px] md:text-xs font-mono tracking-widest uppercase text-white/60 group-hover:text-white transition-colors duration-300">Stylee</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="absolute right-[1%] bottom-[2%] md:right-[10%]" data-scroll-speed="52" role="listitem">
-        <div data-depth="18">
-          <div class="float-bubble" style="animation: 2.9s ease-in-out 0.3s infinite alternate none running floatBubble;">
-            <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-white/10 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
-              <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
-                <img alt="Logo Asimov" class="logo-mono h-6 md:h-7 w-auto max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" src="assets/experiencia/logo-asimov.png"/>
-                <span class="text-[10px] md:text-xs font-mono tracking-widest uppercase text-white/60 group-hover:text-white transition-colors duration-300">Asimov</span>
+
+      <!-- grupo Asimov: o curso e as ferramentas aprendidas nele (Claude, N8N), ligados como nós de um fluxo
+           e movidos juntos pelo parallax; cada logo mantém sua própria flutuação floatBubble -->
+      <div class="absolute left-0 right-0 top-[50%] bottom-0 md:left-[34%] md:top-[34%]" data-scroll-speed="22">
+        <div class="relative h-full" data-depth="20">
+          <div aria-hidden="true" class="pointer-events-none absolute left-1/2 top-[112px] md:top-[128px] h-[26px] w-px -translate-x-1/2 bg-gradient-to-b from-[#6366F1]/60 to-[#6366F1]/30"></div>
+          <div aria-hidden="true" class="pointer-events-none absolute left-1/4 right-1/4 top-[138px] md:top-[154px] h-px bg-[#6366F1]/30"></div>
+          <div aria-hidden="true" class="pointer-events-none absolute left-1/4 top-[138px] md:top-[154px] h-[26px] w-px -translate-x-1/2 bg-gradient-to-b from-[#6366F1]/30 to-[#6366F1]/60"></div>
+          <div aria-hidden="true" class="pointer-events-none absolute right-1/4 top-[138px] md:top-[154px] h-[26px] w-px translate-x-1/2 bg-gradient-to-b from-[#6366F1]/30 to-[#6366F1]/60"></div>
+          <span aria-hidden="true" class="pointer-events-none absolute left-1/2 top-[130px] md:top-[146px] -translate-x-1/2 whitespace-nowrap rounded-md border border-[#6366F1]/20 bg-[#18181B] px-2 py-0.5 text-[9px] font-mono uppercase tracking-widest text-[#6366F1]">via Asimov</span>
+
+          <div class="grid grid-cols-2 justify-items-center gap-x-3 gap-y-[52px]">
+            <div class="col-span-2" role="listitem">
+              <div class="float-bubble" style="animation: 2.9s ease-in-out 0.3s infinite alternate none running floatBubble;">
+                <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-[#6366F1]/30 via-white/5 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
+                  <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
+                    <img alt="Logo Asimov" class="logo-mono h-6 md:h-7 w-auto max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" src="assets/experiencia/logo-asimov.png"/>
+                    <span class="text-[10px] md:text-xs font-mono tracking-widest uppercase text-white/60 group-hover:text-white transition-colors duration-300">Asimov</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div role="listitem">
+              <div class="float-bubble" style="animation: 3.2s ease-in-out 0.4s infinite alternate none running floatBubble;">
+                <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-[#6366F1]/30 via-white/5 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
+                  <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
+                    <img alt="Logo Claude" class="logo-mono h-9 md:h-10 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" src="assets/experiencia/logo-claude.svg"/>
+                    <span class="text-[10px] md:text-xs font-mono tracking-widest uppercase text-white/60 group-hover:text-white transition-colors duration-300">Claude</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div role="listitem">
+              <div class="float-bubble" style="animation: 3.5s ease-in-out 0.5s infinite alternate none running floatBubble;">
+                <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-[#6366F1]/30 via-white/5 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
+                  <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
+                    <img alt="Logo N8N" class="logo-mono h-7 md:h-8 w-auto max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" src="assets/experiencia/logo-n8n.png"/>
+                    <span class="text-[10px] md:text-xs font-mono tracking-widest uppercase text-white/60 group-hover:text-white transition-colors duration-300">N8N</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -445,8 +480,11 @@
       <div class="h-56 relative bg-black/40 border-b border-white/5 overflow-hidden">
         <canvas aria-hidden="true" class="absolute inset-0 w-full h-full" id="canvas-network" style="touch-action: none;"></canvas>
         <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div class="glass-dark rounded-xl px-5 py-3 transition-transform duration-700 group-hover:scale-105">
+          <div class="glass-dark rounded-xl px-5 py-3 flex items-center gap-3 transition-transform duration-700 group-hover:scale-105">
             <img alt="Logo Asimov" class="logo-mono h-6 w-auto opacity-80" src="assets/experiencia/logo-asimov.png"/>
+            <span aria-hidden="true" class="h-5 w-px bg-white/15"></span>
+            <img alt="Logo Claude" class="logo-mono h-5 w-auto opacity-70" src="assets/experiencia/logo-claude.svg"/>
+            <img alt="Logo N8N" class="logo-mono h-4 w-auto opacity-70" src="assets/experiencia/logo-n8n.png"/>
           </div>
         </div>
         <div aria-hidden="true" class="absolute top-6 left-6 w-2 h-2 border-t border-l border-[#6366F1]/30 opacity-50"></div>
@@ -459,9 +497,12 @@
         </div>
         <h3 class="text-2xl font-normal tracking-tight text-white mb-4">Asimov</h3>
         <p class="text-sm font-light text-zinc-400 leading-relaxed">Análise de dados e aplicação de inteligência artificial em processos de negócio, com destaque para a <span class="text-white">gestão de IA</span>: escolher as ferramentas certas, estruturar fluxos e usar dados para decidir melhor, do planejamento de conteúdo à otimização de campanhas.</p>
+        <p class="mt-4 text-sm font-light text-zinc-400 leading-relaxed">É também do curso Asimov que vem o domínio completo e prático na execução de ferramentas de inteligência artificial, como o <span class="text-white">Claude</span> e o <span class="text-white">Claude Code</span>, e a experiência com o <span class="text-white">N8N</span> para integração tecnológica: automação de atendimento com IA (autoatendimento) e outros fluxos que conectam sistemas entre si. Um repertório aplicado no dia a dia, que transforma a gestão de IA em competência prática.</p>
         <div class="mt-8 flex flex-wrap gap-2">
           <span class="inline-flex items-center gap-2 text-xs font-mono text-[#6366F1] bg-[#6366F1]/10 border border-[#6366F1]/20 px-2.5 py-1.5 rounded-md"><span class="w-1 h-1 rounded-full bg-[#6366F1]"></span>Análise de dados</span>
           <span class="inline-flex items-center gap-2 text-xs font-mono text-[#6366F1] bg-[#6366F1]/10 border border-[#6366F1]/20 px-2.5 py-1.5 rounded-md"><span class="w-1 h-1 rounded-full bg-[#6366F1]"></span>Gestão de IA</span>
+          <span class="inline-flex items-center gap-2 text-xs font-mono text-[#6366F1] bg-[#6366F1]/10 border border-[#6366F1]/20 px-2.5 py-1.5 rounded-md"><span class="w-1 h-1 rounded-full bg-[#6366F1]"></span>Claude · Claude Code</span>
+          <span class="inline-flex items-center gap-2 text-xs font-mono text-[#6366F1] bg-[#6366F1]/10 border border-[#6366F1]/20 px-2.5 py-1.5 rounded-md"><span class="w-1 h-1 rounded-full bg-[#6366F1]"></span>N8N · Automação</span>
         </div>
       </div>
     </article>
