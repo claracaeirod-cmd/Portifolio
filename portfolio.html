@@ -90,6 +90,14 @@
   .glass-dark { background: #ffffff0d; border: 1px solid rgba(255,255,255,.06); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 16px; }
   .logo-mono { filter: brightness(0) invert(1); }
 
+  /* ---- Serviços ---- */
+  /* barras do mini-gráfico de leads crescem quando o card é revelado (transição duration-1000 do Site 1) */
+  .svc-bar { height: 12%; transition: height 1s cubic-bezier(.16,1,.3,1); }
+  .animate-fade-in-up .svc-bar { height: var(--h); }
+  @media (prefers-reduced-motion: reduce) {
+    .svc-bar { height: var(--h) !important; transition: none !important; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .animate-marquee, .animate-marquee2, .ticket-card, .ticket-card:hover, .sticker, .pulse-dot, .float-bubble { animation: none !important; }
     .reveal, .reveal-scroll, .animate-fade-in-up { opacity: 1 !important; animation: none !important; }
@@ -97,6 +105,7 @@
   }
 </style>
 <noscript><style>.reveal,.reveal-scroll,#mainTitle,#photoWrap,.mediaCard,#metaRail,#sequenceLabel{opacity:1!important}.title-underline{transform:scaleX(1)}</style></noscript>
+<noscript><style>.svc-bar{height:var(--h)}</style></noscript>
 </head>
 <body class="min-h-screen overflow-x-hidden antialiased selection:bg-[#6366F1]/30 selection:text-white text-zinc-400 relative">
 
@@ -543,6 +552,300 @@
         </div>
       </div>
     </article>
+  </div>
+</section>
+
+<!-- serviços (Site 2: grade de 3 cards da seção pricing, com o card central em destaque, e listas com check;
+     Site 1: moldura visual dos cards da learn-grid, sticker-float/floatBubble com tempos escalonados e fade-in-up no scroll;
+     elementos flutuantes com o mesmo parallax de scroll [data-scroll-speed] e de mouse [data-depth] das etapas anteriores) -->
+<section aria-labelledby="svc-title" class="relative z-20 w-full max-w-6xl mx-auto px-4 pt-24 pb-24 flex flex-col gap-12 border-t border-white/10 text-white scroll-mt-28" id="servicos">
+  <div class="reveal-scroll flex flex-col items-center text-center" data-reveal-delay="0">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 mb-8">
+      <span class="w-1.5 h-1.5 rounded-full bg-[#6366F1] animate-pulse shadow-[0_0_8px_rgba(99,102,241,0.8)]"></span>
+      <span class="text-xs font-mono tracking-widest text-zinc-400 uppercase">Serviços</span>
+    </div>
+    <h2 class="text-4xl md:text-5xl font-light tracking-tight text-white leading-tight" id="svc-title">O que eu faço<br class="hidden md:block"/> pela sua marca.</h2>
+    <p class="mt-6 text-zinc-400 text-sm md:text-base font-light leading-relaxed max-w-xl">Três frentes que se complementam: presença estratégica nas redes, atendimento que funciona sozinho e anúncios que trazem novos clientes todos os dias.</p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+
+    <!-- 01 · Social Media -->
+    <div class="reveal-scroll" data-reveal-delay="0">
+      <article class="group relative h-full p-3 rounded-[24px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 hover:border-white/10 transition-colors duration-700 flex flex-col shadow-2xl shadow-black/80 overflow-hidden">
+        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#6366F1]/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
+        <!-- elementos flutuantes: redes sociais, post e carrossel -->
+        <div aria-hidden="true" class="relative h-52 overflow-hidden rounded-[14px] border border-white/5 bg-black/40">
+          <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle, rgba(255, 255, 255, 0.45) 0px, rgba(255, 255, 255, 0.45) 0.055rem, transparent 0.075rem); background-size: 0.7rem 0.7rem;"></div>
+          <div class="absolute inset-0 opacity-60 group-hover:opacity-100 transition-opacity duration-700" style="background: radial-gradient(circle at 30% 60%, rgba(210,111,255,.18), transparent 55%), radial-gradient(circle at 80% 30%, rgba(99,102,241,.2), transparent 50%);"></div>
+          <div class="absolute top-4 left-4 w-2 h-2 border-t border-l border-[#6366F1]/40"></div>
+          <div class="absolute bottom-4 right-4 w-2 h-2 border-b border-r border-[#6366F1]/40"></div>
+
+          <div class="absolute left-[7%] top-[12%]">
+            <div data-scroll-speed="-16"><div data-depth="10">
+              <div class="sticker" style="animation: 6s ease-in-out 0s infinite normal none running sticker-float-0;">
+                <div class="w-24 rounded-xl border border-white/10 bg-[#18181B]/90 p-1.5 shadow-2xl shadow-black/80 backdrop-blur-md">
+                  <div class="h-20 rounded-lg" style="background: radial-gradient(circle at 30% 70%, rgba(197,255,92,.55), transparent 55%), radial-gradient(circle at 75% 25%, rgba(210,111,255,.6), transparent 55%), #0a0a0a;"></div>
+                  <div class="mt-1.5 flex items-center justify-between px-0.5">
+                    <span class="flex gap-1"><iconify-icon class="text-[11px] text-white/70" icon="solar:heart-linear"></iconify-icon><iconify-icon class="text-[11px] text-white/70" icon="solar:chat-round-line-linear"></iconify-icon></span>
+                    <span class="h-1 w-6 rounded-full bg-white/15"></span>
+                  </div>
+                </div>
+              </div>
+            </div></div>
+          </div>
+          <div class="absolute left-[40%] top-[15%]">
+            <div data-scroll-speed="-4"><div data-depth="8">
+              <div class="sticker" style="animation: 5s ease-in-out 0.4s infinite normal none running sticker-float-1;">
+                <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/45 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[.18rem] text-white/80 backdrop-blur-md">
+                  <span class="flex gap-1"><span class="h-1.5 w-1.5 rounded-full bg-lime-300"></span><span class="h-1.5 w-1.5 rounded-full bg-white/30"></span><span class="h-1.5 w-1.5 rounded-full bg-white/30"></span></span>Carrossel
+                </span>
+              </div>
+            </div></div>
+          </div>
+          <div class="absolute right-[9%] top-[40%]">
+            <div data-scroll-speed="-8"><div data-depth="18">
+              <div class="float-bubble" style="animation: 2.3s ease-in-out 0.1s infinite alternate none running floatBubble;">
+                <div class="w-12 h-12 rounded-2xl border border-white/10 bg-[#18181B]/90 flex items-center justify-center shadow-2xl shadow-black/80"><iconify-icon class="text-xl text-white" icon="simple-icons:instagram"></iconify-icon></div>
+              </div>
+            </div></div>
+          </div>
+          <div class="absolute right-[30%] bottom-[10%]">
+            <div data-scroll-speed="12"><div data-depth="24">
+              <div class="float-bubble" style="animation: 2.9s ease-in-out 0.3s infinite alternate none running floatBubble;">
+                <div class="w-12 h-12 rounded-2xl border border-white/10 bg-[#18181B]/90 flex items-center justify-center shadow-2xl shadow-black/80"><iconify-icon class="text-xl text-white" icon="simple-icons:tiktok"></iconify-icon></div>
+              </div>
+            </div></div>
+          </div>
+          <div class="absolute left-[6%] bottom-[9%]">
+            <div data-scroll-speed="18"><div data-depth="14">
+              <div class="sticker" style="animation: 6s ease-in-out 0.8s infinite normal none running sticker-float-2;">
+                <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/45 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[.18rem] text-white/80 backdrop-blur-md"><iconify-icon class="text-sm text-fuchsia-300" icon="solar:calendar-linear"></iconify-icon>Calendário</span>
+              </div>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="relative z-10 px-5 pt-7 pb-4 flex-1 flex flex-col">
+          <div class="flex items-center gap-3 mb-5">
+            <iconify-icon class="text-xl text-[#6366F1]" icon="solar:users-group-rounded-linear" aria-hidden="true"></iconify-icon>
+            <span class="text-xs font-mono tracking-widest text-zinc-500 uppercase">01 · Social Media</span>
+          </div>
+          <h3 class="text-2xl font-normal tracking-tight text-white mb-3">Social Media para empresas e organizações</h3>
+          <p class="text-sm font-light text-zinc-400 leading-relaxed">Gestão completa das redes da sua marca, do planejamento à interação diária, com design e estratégia trabalhando juntos.</p>
+          <div class="mt-7 flex flex-col gap-5 flex-1">
+            <div>
+              <p class="font-mono text-[10px] uppercase tracking-widest text-zinc-500 mb-3">Gerenciamento</p>
+              <ul class="flex flex-col gap-3">
+                <li class="flex items-start gap-3 text-sm text-zinc-400 font-light"><iconify-icon class="text-[#6366F1] text-lg shrink-0" icon="solar:check-circle-linear" aria-hidden="true"></iconify-icon>Rotina de postagens com constância</li>
+                <li class="flex items-start gap-3 text-sm text-zinc-400 font-light"><iconify-icon class="text-[#6366F1] text-lg shrink-0" icon="solar:check-circle-linear" aria-hidden="true"></iconify-icon>Interação e atendimento em comentários e DMs</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-mono text-[10px] uppercase tracking-widest text-zinc-500 mb-3">Design</p>
+              <ul class="flex flex-col gap-3">
+                <li class="flex items-start gap-3 text-sm text-zinc-400 font-light"><iconify-icon class="text-[#6366F1] text-lg shrink-0" icon="solar:check-circle-linear" aria-hidden="true"></iconify-icon>Identidade visual aplicada a cada post</li>
+                <li class="flex items-start gap-3 text-sm text-zinc-400 font-light"><iconify-icon class="text-[#6366F1] text-lg shrink-0" icon="solar:check-circle-linear" aria-hidden="true"></iconify-icon>Criação de artes, carrosséis e stories</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-mono text-[10px] uppercase tracking-widest text-zinc-500 mb-3">Estratégia</p>
+              <ul class="flex flex-col gap-3">
+                <li class="flex items-start gap-3 text-sm text-zinc-400 font-light"><iconify-icon class="text-[#6366F1] text-lg shrink-0" icon="solar:check-circle-linear" aria-hidden="true"></iconify-icon>Calendário editorial e pilares de conteúdo</li>
+                <li class="flex items-start gap-3 text-sm text-zinc-400 font-light"><iconify-icon class="text-[#6366F1] text-lg shrink-0" icon="solar:check-circle-linear" aria-hidden="true"></iconify-icon>Análise de métricas e ajuste contínuo da estratégia</li>
+              </ul>
+            </div>
+          </div>
+          <a class="mt-8 block w-full py-3 rounded-lg bg-white/5 border border-white/10 text-center text-white text-sm tracking-tight hover:bg-white/10 transition-colors" href="#contato">Quero esse serviço</a>
+        </div>
+      </article>
+    </div>
+
+    <!-- 02 · Automação (card em destaque, como o central da pricing do Site 2) -->
+    <div class="reveal-scroll" data-reveal-delay="120">
+      <article class="group relative h-full p-3 rounded-[24px] bg-[#18181B]/95 backdrop-blur-xl border border-[#6366F1]/30 flex flex-col overflow-hidden lg:-translate-y-4 shadow-[0_0_30px_rgba(99,102,241,0.15)]">
+        <div aria-hidden="true" class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#6366F1] to-transparent"></div>
+        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#6366F1]/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
+        <!-- elementos flutuantes: WhatsApp e e-mail conectados ao N8N, saídas do fluxo -->
+        <div aria-hidden="true" class="relative h-52 overflow-hidden rounded-[14px] border border-white/5 bg-black/40">
+          <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle, rgba(255, 255, 255, 0.45) 0px, rgba(255, 255, 255, 0.45) 0.055rem, transparent 0.075rem); background-size: 0.7rem 0.7rem;"></div>
+          <div class="absolute inset-0 opacity-70 group-hover:opacity-100 transition-opacity duration-700" style="background: radial-gradient(circle at 50% 50%, rgba(99,102,241,.28), transparent 45%);"></div>
+          <svg class="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+            <path d="M17 29 C 33 29, 36 50, 50 50" fill="none" stroke="rgba(99,102,241,0.5)" stroke-dasharray="3 5" stroke-width="1" vector-effect="non-scaling-stroke"/>
+            <path d="M17 73 C 33 73, 36 50, 50 50" fill="none" stroke="rgba(99,102,241,0.5)" stroke-dasharray="3 5" stroke-width="1" vector-effect="non-scaling-stroke"/>
+            <path d="M50 50 C 64 50, 66 29, 78 29" fill="none" stroke="rgba(99,102,241,0.5)" stroke-dasharray="3 5" stroke-width="1" vector-effect="non-scaling-stroke"/>
+            <path d="M50 50 C 64 50, 66 73, 78 73" fill="none" stroke="rgba(99,102,241,0.5)" stroke-dasharray="3 5" stroke-width="1" vector-effect="non-scaling-stroke"/>
+          </svg>
+          <div class="absolute top-4 right-4 w-2 h-2 border-t border-r border-[#6366F1]/40"></div>
+          <div class="absolute bottom-4 left-4 w-2 h-2 border-b border-l border-[#6366F1]/40"></div>
+
+          <div class="absolute left-[17%] top-[29%] -translate-x-1/2 -translate-y-1/2">
+            <div data-scroll-speed="-8"><div data-depth="12">
+              <div class="float-bubble" style="animation: 2s ease-in-out 0s infinite alternate none running floatBubble;">
+                <div class="w-12 h-12 rounded-2xl border border-white/10 bg-[#18181B]/90 flex items-center justify-center shadow-2xl shadow-black/80"><iconify-icon class="text-xl text-white" icon="simple-icons:whatsapp"></iconify-icon></div>
+              </div>
+            </div></div>
+          </div>
+          <div class="absolute left-[17%] top-[73%] -translate-x-1/2 -translate-y-1/2">
+            <div data-scroll-speed="8"><div data-depth="16">
+              <div class="float-bubble" style="animation: 2.6s ease-in-out 0.2s infinite alternate none running floatBubble;">
+                <div class="w-12 h-12 rounded-2xl border border-white/10 bg-[#18181B]/90 flex items-center justify-center shadow-2xl shadow-black/80"><iconify-icon class="text-xl text-white" icon="solar:letter-linear"></iconify-icon></div>
+              </div>
+            </div></div>
+          </div>
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div data-scroll-speed="-4"><div data-depth="6">
+              <div class="float-bubble" style="animation: 2.9s ease-in-out 0.3s infinite alternate none running floatBubble;">
+                <div class="p-[1px] rounded-2xl bg-gradient-to-b from-[#6366F1]/50 via-white/5 to-transparent shadow-2xl shadow-black/80">
+                  <div class="h-14 px-4 rounded-[15px] bg-[#18181B]/95 flex items-center"><img alt="" class="logo-mono h-6 w-auto" src="assets/experiencia/logo-n8n.png"/></div>
+                </div>
+              </div>
+            </div></div>
+          </div>
+          <div class="absolute left-[78%] top-[29%] -translate-x-1/2 -translate-y-1/2">
+            <div data-scroll-speed="-12"><div data-depth="10">
+              <div class="sticker" style="animation: 5s ease-in-out 0.4s infinite normal none running sticker-float-1;">
+                <span class="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-white/10 bg-black/45 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[.14rem] text-white/80 backdrop-blur-md"><iconify-icon class="text-sm text-lime-300" icon="solar:chat-round-dots-linear"></iconify-icon>Resposta</span>
+              </div>
+            </div></div>
+          </div>
+          <div class="absolute left-[78%] top-[73%] -translate-x-1/2 -translate-y-1/2">
+            <div data-scroll-speed="12"><div data-depth="14">
+              <div class="sticker" style="animation: 6s ease-in-out 0.8s infinite normal none running sticker-float-2;">
+                <span class="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-white/10 bg-black/45 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[.14rem] text-white/80 backdrop-blur-md"><iconify-icon class="text-sm text-cyan-300" icon="solar:users-group-rounded-linear"></iconify-icon>Triagem</span>
+              </div>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="relative z-10 px-5 pt-7 pb-4 flex-1 flex flex-col">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+            <div class="flex items-center gap-3">
+              <iconify-icon class="text-xl text-[#6366F1]" icon="solar:cpu-linear" aria-hidden="true"></iconify-icon>
+              <span class="whitespace-nowrap text-xs font-mono tracking-widest text-[#6366F1] uppercase">02 · Automação · N8N</span>
+            </div>
+            <span class="px-2 py-0.5 rounded border border-[#6366F1]/20 bg-[#6366F1]/10 text-[10px] font-mono text-white tracking-widest uppercase">Sob medida</span>
+          </div>
+          <h3 class="text-2xl font-normal tracking-tight text-white mb-3">Automação personalizada para empresas</h3>
+          <p class="text-sm font-light text-zinc-300 leading-relaxed">Fluxos de automação criados no N8N sob medida para a rotina da sua empresa, conectando o atendimento às ferramentas que você já usa.</p>
+          <div class="mt-7 flex flex-col gap-5 flex-1">
+            <div>
+              <p class="font-mono text-[10px] uppercase tracking-widest text-zinc-500 mb-3">WhatsApp</p>
+              <ul class="flex flex-col gap-3">
+                <li class="flex items-start gap-3 text-sm text-zinc-300 font-light"><iconify-icon class="text-[#6366F1] text-lg shrink-0" icon="solar:check-circle-linear" aria-hidden="true"></iconify-icon>Respostas automáticas e triagem de contatos</li>
+                <li class="flex items-start gap-3 text-sm text-zinc-300 font-light"><iconify-icon class="text-[#6366F1] text-lg shrink-0" icon="solar:check-circle-linear" aria-hidden="true"></iconify-icon>Fluxos de conversa que conduzem o cliente</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-mono text-[10px] uppercase tracking-widest text-zinc-500 mb-3">E-mail</p>
+              <ul class="flex flex-col gap-3">
+                <li class="flex items-start gap-3 text-sm text-zinc-300 font-light"><iconify-icon class="text-[#6366F1] text-lg shrink-0" icon="solar:check-circle-linear" aria-hidden="true"></iconify-icon>Respostas automáticas e organização de solicitações</li>
+                <li class="flex items-start gap-3 text-sm text-zinc-300 font-light"><iconify-icon class="text-[#6366F1] text-lg shrink-0" icon="solar:check-circle-linear" aria-hidden="true"></iconify-icon>Integração com outras ferramentas e sistemas</li>
+              </ul>
+            </div>
+            <div class="glass-dark px-5 py-4">
+              <p class="font-mono text-[10px] uppercase tracking-widest text-[#6366F1] mb-2">O ganho</p>
+              <p class="text-[13px] leading-relaxed text-white/70">Mais agilidade, atendimento padronizado e menos trabalho manual repetitivo para a sua equipe.</p>
+            </div>
+          </div>
+          <a class="mt-8 block w-full py-3 rounded-lg bg-[#6366F1] text-center text-white text-sm tracking-tight hover:bg-[#6366F1]/90 transition-colors shadow-[0_0_15px_rgba(99,102,241,0.3)]" href="#contato">Quero automatizar</a>
+        </div>
+      </article>
+    </div>
+
+    <!-- 03 · Tráfego pago -->
+    <div class="reveal-scroll" data-reveal-delay="240">
+      <article class="group relative h-full p-3 rounded-[24px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 hover:border-white/10 transition-colors duration-700 flex flex-col shadow-2xl shadow-black/80 overflow-hidden">
+        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#6366F1]/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
+        <!-- elementos flutuantes: leads por dia, funil, clique, engajamento, custo por lead -->
+        <div aria-hidden="true" class="relative h-52 overflow-hidden rounded-[14px] border border-white/5 bg-black/40">
+          <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle, rgba(255, 255, 255, 0.45) 0px, rgba(255, 255, 255, 0.45) 0.055rem, transparent 0.075rem); background-size: 0.7rem 0.7rem;"></div>
+          <div class="absolute inset-0 opacity-60 group-hover:opacity-100 transition-opacity duration-700" style="background: radial-gradient(circle at 30% 40%, rgba(99,102,241,.22), transparent 50%), radial-gradient(circle at 80% 80%, rgba(197,255,92,.12), transparent 50%);"></div>
+          <div class="absolute top-4 left-4 w-2 h-2 border-t border-l border-[#6366F1]/40"></div>
+          <div class="absolute bottom-4 right-4 w-2 h-2 border-b border-r border-[#6366F1]/40"></div>
+
+          <div class="absolute left-[8%] top-[12%]">
+            <div data-scroll-speed="-14"><div data-depth="10">
+              <div class="float-bubble" style="animation: 2.6s ease-in-out 0.2s infinite alternate none running floatBubble;">
+                <div class="w-36 rounded-xl border border-white/10 bg-[#18181B]/90 p-3 shadow-2xl shadow-black/80 backdrop-blur-md">
+                  <div class="flex items-center justify-between">
+                    <span class="font-mono text-[9px] uppercase tracking-widest text-zinc-500">Leads / dia</span>
+                    <span class="pulse-dot h-1.5 w-1.5 rounded-full bg-lime-300 shadow-[0_0_8px_rgba(190,242,100,0.8)]"></span>
+                  </div>
+                  <div class="mt-2 flex h-14 items-end gap-1.5">
+                    <span class="svc-bar w-full rounded-sm bg-[#6366F1]/40" style="--h: 30%; transition-delay: 0ms;"></span>
+                    <span class="svc-bar w-full rounded-sm bg-[#6366F1]/40" style="--h: 44%; transition-delay: 80ms;"></span>
+                    <span class="svc-bar w-full rounded-sm bg-[#6366F1]/40" style="--h: 38%; transition-delay: 160ms;"></span>
+                    <span class="svc-bar w-full rounded-sm bg-[#6366F1]/50" style="--h: 58%; transition-delay: 240ms;"></span>
+                    <span class="svc-bar w-full rounded-sm bg-[#6366F1]/60" style="--h: 72%; transition-delay: 320ms;"></span>
+                    <span class="svc-bar w-full rounded-sm bg-[#6366F1] shadow-[0_0_8px_rgba(99,102,241,0.8)]" style="--h: 92%; transition-delay: 400ms;"></span>
+                  </div>
+                </div>
+              </div>
+            </div></div>
+          </div>
+          <div class="absolute right-[11%] top-[12%]">
+            <div data-scroll-speed="-6"><div data-depth="18">
+              <div class="float-bubble" style="animation: 2.3s ease-in-out 0.1s infinite alternate none running floatBubble;">
+                <div class="w-12 h-12 rounded-2xl border border-white/10 bg-[#18181B]/90 flex items-center justify-center shadow-2xl shadow-black/80"><iconify-icon class="text-xl text-white" icon="solar:filter-linear"></iconify-icon></div>
+              </div>
+            </div></div>
+          </div>
+          <div class="absolute right-[7%] top-[52%]">
+            <div data-scroll-speed="10"><div data-depth="14">
+              <div class="sticker" style="animation: 5s ease-in-out 0.4s infinite normal none running sticker-float-1;">
+                <span class="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-white/10 bg-black/45 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[.14rem] text-white/80 backdrop-blur-md"><iconify-icon class="text-sm text-cyan-300" icon="solar:cursor-linear"></iconify-icon>Clique</span>
+              </div>
+            </div></div>
+          </div>
+          <div class="absolute left-[50%] bottom-[8%]">
+            <div data-scroll-speed="16"><div data-depth="20">
+              <div class="sticker" style="animation: 6s ease-in-out 0.8s infinite normal none running sticker-float-2;">
+                <span class="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-white/10 bg-black/45 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[.14rem] text-white/80 backdrop-blur-md"><iconify-icon class="text-sm text-fuchsia-300" icon="solar:like-linear"></iconify-icon>Engajamento</span>
+              </div>
+            </div></div>
+          </div>
+          <div class="absolute left-[7%] bottom-[9%]">
+            <div data-scroll-speed="18"><div data-depth="8">
+              <div class="sticker" style="animation: 4s ease-in-out 1.2s infinite normal none running sticker-float-0;">
+                <span class="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-[#bef264]/20 bg-black/45 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[.14rem] text-white/80 backdrop-blur-md"><iconify-icon class="text-sm text-lime-300" icon="solar:arrow-down-linear"></iconify-icon>Custo/lead</span>
+              </div>
+            </div></div>
+          </div>
+        </div>
+
+        <div class="relative z-10 px-5 pt-7 pb-4 flex-1 flex flex-col">
+          <div class="flex items-center gap-3 mb-5">
+            <iconify-icon class="text-xl text-[#6366F1]" icon="solar:graph-up-linear" aria-hidden="true"></iconify-icon>
+            <span class="text-xs font-mono tracking-widest text-zinc-500 uppercase">03 · Tráfego pago</span>
+          </div>
+          <h3 class="text-2xl font-normal tracking-tight text-white mb-3">Tráfego pago com geração de leads</h3>
+          <p class="text-sm font-light text-zinc-400 leading-relaxed">Gestão de campanhas para empresas e negócios com um objetivo claro: gerar leads de forma diária e constante.</p>
+          <div class="mt-7 flex flex-col gap-5 flex-1">
+            <div>
+              <p class="font-mono text-[10px] uppercase tracking-widest text-zinc-500 mb-3">Campanhas</p>
+              <ul class="flex flex-col gap-3">
+                <li class="flex items-start gap-3 text-sm text-zinc-400 font-light"><iconify-icon class="text-[#6366F1] text-lg shrink-0" icon="solar:check-circle-linear" aria-hidden="true"></iconify-icon>Planejamento e gestão de campanhas de tráfego pago</li>
+                <li class="flex items-start gap-3 text-sm text-zinc-400 font-light"><iconify-icon class="text-[#6366F1] text-lg shrink-0" icon="solar:check-circle-linear" aria-hidden="true"></iconify-icon>Foco em geração de leads todos os dias</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-mono text-[10px] uppercase tracking-widest text-zinc-500 mb-3">Otimização contínua</p>
+              <ul class="flex flex-col gap-3">
+                <li class="flex items-start gap-3 text-sm text-zinc-400 font-light"><iconify-icon class="text-[#6366F1] text-lg shrink-0" icon="solar:check-circle-linear" aria-hidden="true"></iconify-icon>Segmentação refinada do público</li>
+                <li class="flex items-start gap-3 text-sm text-zinc-400 font-light"><iconify-icon class="text-[#6366F1] text-lg shrink-0" icon="solar:check-circle-linear" aria-hidden="true"></iconify-icon>Testes de criativos para descobrir o que converte</li>
+                <li class="flex items-start gap-3 text-sm text-zinc-400 font-light"><iconify-icon class="text-[#6366F1] text-lg shrink-0" icon="solar:check-circle-linear" aria-hidden="true"></iconify-icon>Ajuste de orçamento para reduzir o custo por lead ao longo do tempo</li>
+              </ul>
+            </div>
+          </div>
+          <a class="mt-8 block w-full py-3 rounded-lg bg-white/5 border border-white/10 text-center text-white text-sm tracking-tight hover:bg-white/10 transition-colors" href="#contato">Quero gerar leads</a>
+        </div>
+      </article>
+    </div>
+
   </div>
 </section>
 
