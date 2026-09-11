@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clara — Social Media &amp; Tráfego Pago</title>
+<meta content="Clara, social media: estratégia, conteúdo e gestão de redes que fazem sua marca parar o scroll — com tráfego pago para escalar resultados." name="description"/>
+<!-- fonts: Inter + JetBrains Mono + Barlow Condensed (Site 2) · Satoshi (Site 1, Fontshare) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet"/>
+<!-- head-only js: runtime do Tailwind CSS 3.4.17 (mesmo runtime do Site 2) -->
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<!-- head-only js: web component <iconify-icon> (ícones solar:*, como no Site 2) -->
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<style>
+  /* ---- Site 2 · base.css ---- */
+  body { font-family: 'Inter', sans-serif; background-color: #000000; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .font-condensed { font-family: 'Barlow Condensed', Impact, sans-serif; }
+
+  /* ---- Site 1 · keyframes originais (index-BIISZeGo.css) ---- */
+  @keyframes marquee { 0% { transform: translate(0) } to { transform: translate(-100%) } }
+  @keyframes marquee2 { 0% { transform: translate(100%) } to { transform: translate(0) } }
+  @keyframes fade-in-up { 0% { opacity: 0; transform: translateY(20px) } to { opacity: 1; transform: translateY(0) } }
+  @keyframes pulse-dot { 0%, to { opacity: 1 } 50% { opacity: .4 } }
+  @keyframes underline-draw { 0% { transform: scaleX(0) } to { transform: scaleX(1) } }
+  @keyframes sticker-float-0 { 0%, to { transform: rotate(-12deg) translateY(0) } 50% { transform: rotate(-10deg) translateY(-12px) } }
+  @keyframes sticker-float-1 { 0%, to { transform: rotate(6deg) translateY(0) } 50% { transform: rotate(8deg) translateY(-10px) } }
+  @keyframes sticker-float-2 { 0%, to { transform: rotate(12deg) translateY(0) } 50% { transform: rotate(14deg) translateY(-14px) } }
+  @keyframes ticket-wiggle { 0%, to { transform: rotate(0) } 15% { transform: rotate(-2deg) scale(1.03) } 30% { transform: rotate(2deg) scale(1.03) } 45% { transform: rotate(-1.5deg) scale(1.02) } 60% { transform: rotate(1deg) } 80% { transform: rotate(-.5deg) } }
+  @keyframes ticket-wiggle-loop { 0%, 88% { transform: rotate(0) scale(1) } 90% { transform: rotate(-2deg) scale(1.03) } 93% { transform: rotate(2deg) scale(1.03) } 95% { transform: rotate(-1.5deg) scale(1.02) } 97% { transform: rotate(1deg) } 99% { transform: rotate(-.5deg) } to { transform: rotate(0) scale(1) } }
+
+  .animate-marquee { animation: marquee 30s linear infinite; }
+  .animate-marquee2 { animation: marquee2 30s linear infinite; }
+  .reveal { opacity: 0; }
+  .animate-fade-in-up { animation: fade-in-up .7s cubic-bezier(.16,1,.3,1) forwards; opacity: 0; }
+  .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+  .heading-h1 { font-family: Satoshi, Inter, sans-serif; font-weight: 500; letter-spacing: -.04em; line-height: .95; }
+
+  /* sublinhado desenhado (Site 1 · underline-draw) */
+  .title-underline { transform: scaleX(0); transform-origin: left center; }
+  .title-underline.is-drawn { animation: underline-draw .9s cubic-bezier(.16,1,.3,1) forwards; }
+
+  /* ---- Botões: btn-cta (Site 1) sobre a paleta/brilho do Site 2 ---- */
+  .btn-cta {
+    display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+    font-size: .875rem; line-height: 1.25rem; font-weight: 600; letter-spacing: .04em;
+    transition-property: all; transition-timing-function: cubic-bezier(.4,0,.2,1); transition-duration: .3s;
+    background: #bef264; color: #000; border-radius: 80px; padding: 16px 32px; min-height: 48px;
+    box-shadow: 0 0 12px rgba(190,242,100,.4);
+  }
+  .btn-cta:hover { transform: scale(1.03); filter: brightness(1.08); box-shadow: 0 0 30px rgba(190,242,100,.45); }
+  .btn-cta:active { transform: scale(.98); filter: brightness(.96); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+    font-size: 13px; font-weight: 600; letter-spacing: .02em; color: #fff;
+    border: 1px solid rgba(255,255,255,.3); border-radius: 9999px; padding: 12px 24px; min-height: 48px;
+    background: rgba(0,0,0,.35); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    transition: all .5s cubic-bezier(.4,0,.2,1);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.5); transform: scale(1.03); }
+  .btn-ghost:active { transform: scale(.98); }
+  @media (max-width: 767px) {
+    .btn-cta { padding: 14px 20px; }
+    .btn-ghost { padding: 12px 18px; }
+  }
+  .btn-cta:focus-visible, .btn-ghost:focus-visible, .nav-cta:focus-visible { outline: 2px solid #bef264; outline-offset: 3px; }
+  .btn-cta .btn-arrow, .btn-ghost .btn-arrow { transition: transform .3s cubic-bezier(.4,0,.2,1); }
+  .btn-cta:hover .btn-arrow, .btn-ghost:hover .btn-arrow { transform: translateX(4px); }
+  /* ticket-card (Site 1): balanço periódico em repouso + balanço no hover */
+  .ticket-card { display: inline-flex; animation: ticket-wiggle-loop 4s ease-in-out infinite; }
+  .ticket-card:hover { animation: ticket-wiggle .5s ease-in-out; }
+
+  /* foto flutuante */
+  .hero-photo img {
+    -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 98%);
+            mask-image: linear-gradient(to bottom, #000 68%, transparent 98%);
+    filter: drop-shadow(0 0 3rem rgba(214,126,255,.28)) drop-shadow(0 2rem 5rem rgba(0,0,0,.68));
+    transition: filter .7s ease;
+  }
+  .hero-photo:hover img { filter: drop-shadow(0 0 3.5rem rgba(214,126,255,.45)) drop-shadow(0 0 1.5rem rgba(197,255,92,.18)) drop-shadow(0 2rem 5rem rgba(0,0,0,.68)); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee, .animate-marquee2, .ticket-card, .ticket-card:hover, .sticker, .pulse-dot { animation: none !important; }
+    .reveal, .animate-fade-in-up { opacity: 1 !important; animation: none !important; }
+    .title-underline { transform: scaleX(1); animation: none !important; }
+  }
+</style>
+<noscript><style>.reveal,#mainTitle,#photoWrap,.mediaCard,#metaRail,#sequenceLabel{opacity:1!important}.title-underline{transform:scaleX(1)}</style></noscript>
+</head>
+<body class="min-h-screen overflow-x-hidden antialiased selection:bg-[#6366F1]/30 selection:text-white text-zinc-400 relative">
+
+<!-- prism-background (Site 2) -->
+<div class="fixed inset-0 z-[-1] pointer-events-none w-full h-full opacity-60 mix-blend-screen" id="prism-container"></div>
+
+<!-- atmospheric-layers (Site 2) -->
+<div class="fixed inset-0 z-0 pointer-events-none opacity-[0.08]" style="background-image: radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0); background-size: 32px 32px;"></div>
+<div class="fixed inset-0 z-0 flex items-center justify-center pointer-events-none">
+  <div class="w-[800px] h-[800px] rounded-full opacity-30 blur-[120px]" style="background: radial-gradient(circle at center, #6366F1, transparent 60%);"></div>
+</div>
+
+<!-- structural-grid-lines (Site 2) -->
+<div class="fixed inset-0 pointer-events-none z-0 flex items-center justify-center p-6 md:p-12 lg:p-24 opacity-20">
+  <div class="relative w-full max-w-7xl h-full border border-white/10">
+    <div class="absolute inset-y-0 left-[25%] border-l border-white/10"></div>
+    <div class="absolute inset-y-0 right-[25%] border-l border-white/10"></div>
+    <div class="absolute inset-x-0 top-[30%] border-t border-white/10"></div>
+    <div class="absolute inset-x-0 bottom-[30%] border-t border-white/10"></div>
+  </div>
+</div>
+
+<!-- watermark (Site 2) -->
+<div aria-hidden="true" class="fixed inset-0 flex items-center justify-center pointer-events-none z-0">
+  <p class="text-7xl md:text-9xl tracking-tighter text-white font-light uppercase opacity-[0.02] select-none mix-blend-overlay">Social Media</p>
+</div>
+
+<!-- top-marquee (Site 1) -->
+<div class="w-full overflow-hidden relative z-40" style="background: rgb(17, 17, 17); height: 36px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);">
+  <div class="flex items-center h-full" id="topMarquee">
+    <div class="flex animate-marquee whitespace-nowrap" data-marquee-track></div>
+    <div class="flex animate-marquee2 whitespace-nowrap absolute" data-marquee-track aria-hidden="true"></div>
+  </div>
+</div>
+
+<!-- navigation (Site 2) -->
+<header class="fixed top-[48px] md:top-[52px] z-50 flex pointer-events-auto pr-4 pl-4 right-0 left-0 justify-center">
+  <nav aria-label="Principal" class="flex items-center w-full md:w-auto max-w-4xl justify-between md:justify-center bg-[#18181B]/80 border-white/5 border rounded-full py-2 pr-2 pl-4 md:pl-6 shadow-2xl shadow-black/50 backdrop-blur-xl transition-all">
+    <a class="flex items-center gap-2 pr-2 md:pr-6 md:border-r border-white/10 py-1" href="#inicio">
+      <iconify-icon class="text-[#bef264] text-lg" icon="solar:camera-linear" aria-hidden="true"></iconify-icon>
+      <span class="uppercase block text-xs font-normal text-white tracking-tighter font-sans">CLARA.SOCIAL</span>
+    </a>
+    <div class="hidden md:flex gap-6 px-6 items-center">
+      <a class="hover:text-white transition-colors text-xs text-zinc-500 tracking-widest font-mono" href="#sobre">Sobre</a>
+      <a class="hover:text-white transition-colors text-xs text-zinc-500 tracking-widest font-mono" href="#servicos">Serviços</a>
+      <a class="hover:text-white transition-colors text-xs text-zinc-500 tracking-widest font-mono" href="#portfolio">Portfólio</a>
+    </div>
+    <div class="hidden md:flex items-center gap-4 pl-6 border-l border-white/10">
+      <a class="nav-cta hover:bg-indigo-400 transition-colors text-xs font-medium text-white tracking-tight bg-[#6366F1] rounded-full pt-1.5 pr-4 pb-1.5 pl-4 shadow-[0_0_12px_rgba(99,102,241,0.4)]" href="#contato">Fale comigo</a>
+    </div>
+    <div class="flex md:hidden items-center gap-3">
+      <a class="nav-cta hover:bg-indigo-400 transition-colors text-[10px] font-medium text-white tracking-tight bg-[#6366F1] rounded-full pt-1.5 pr-3 pb-1.5 pl-3 shadow-[0_0_12px_rgba(99,102,241,0.4)]" href="#contato">Fale comigo</a>
+      <div class="w-px h-4 bg-white/10"></div>
+      <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menu" class="text-zinc-400 hover:text-white transition-colors p-1.5 mr-0.5 rounded-full hover:bg-white/5 flex items-center justify-center" id="menuToggle" type="button">
+        <iconify-icon class="text-[18px]" icon="solar:hamburger-menu-linear" aria-hidden="true"></iconify-icon>
+      </button>
+    </div>
+  </nav>
+  <div class="hidden md:hidden absolute top-[calc(100%+0.5rem)] left-4 right-4 bg-[#18181B]/95 backdrop-blur-xl border border-white/5 rounded-[1.5rem] p-6 shadow-2xl shadow-black/80 flex flex-col gap-5" id="mobile-menu">
+    <div class="flex flex-col gap-4">
+      <a class="text-left text-xs text-zinc-400 hover:text-white font-mono tracking-widest transition-colors" href="#sobre">Sobre</a>
+      <a class="text-left text-xs text-zinc-400 hover:text-white font-mono tracking-widest transition-colors" href="#servicos">Serviços</a>
+      <a class="text-left text-xs text-zinc-400 hover:text-white font-mono tracking-widest transition-colors" href="#portfolio">Portfólio</a>
+    </div>
+    <div class="w-full h-px bg-white/10"></div>
+    <a class="w-full mt-2 py-3 rounded-xl bg-[#6366F1] text-center text-white text-sm font-medium tracking-tight shadow-[0_0_15px_rgba(99,102,241,0.3)] hover:bg-indigo-400 transition-colors" href="#contato">Fale comigo</a>
+  </div>
+</header>
+
+<!-- hero (estrutura do Site 2 · hero-pulsewave-intro) -->
+<section aria-label="Apresentação" class="flex overflow-hidden antialiased selection:bg-lime-300 selection:text-black text-white w-full relative items-center justify-center" id="inicio" style="height: calc(100svh - 36px); min-height: 640px;">
+  <div aria-hidden="true" class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle, rgba(255, 255, 255, 0.45) 0px, rgba(255, 255, 255, 0.45) 0.055rem, transparent 0.075rem); background-size: 0.7rem 0.7rem; mask-image: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.15) 19%, rgba(0, 0, 0, 0.12) 81%, rgba(0, 0, 0, 0.85));"></div>
+
+  <div class="relative h-[93%] w-[96vw] overflow-hidden rounded-[1.4rem] border border-white/10 bg-black shadow-2xl sm:rounded-[2rem] md:h-[91%] md:w-[95vw]" id="filmStage" style="box-shadow: rgba(0, 0, 0, 0.48) 0px 2rem 8rem, rgba(255, 255, 255, 0.08) 0px 0px 0px 0.0625rem inset;">
+    <canvas aria-hidden="true" class="absolute inset-0 h-full w-full opacity-90" id="webglLayer"></canvas>
+
+    <!-- base abstrata: a própria foto, desfocada, como no abstractBase do Site 2 -->
+    <div aria-hidden="true" class="absolute inset-0 flex items-end justify-center pointer-events-none" data-depth="-12">
+      <img alt="" class="h-full w-auto scale-125 object-contain opacity-0 blur-xl" id="abstractBase" src="assets/clara.png"/>
+    </div>
+
+    <div aria-hidden="true" class="absolute inset-0" style="background: radial-gradient(circle at 50% 56%, rgba(197,255,92,.22), transparent 18%), radial-gradient(circle at 63% 45%, rgba(210,111,255,.32), transparent 25%), linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.12) 38%, rgba(0,0,0,.76));"></div>
+    <div aria-hidden="true" class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black via-black/70 to-transparent"></div>
+    <div aria-hidden="true" class="absolute inset-4 rounded-[1rem] border border-white/[.08] sm:inset-5 md:inset-7" style="box-shadow: inset 0 0 0 .0625rem rgba(255,255,255,.035);"></div>
+    <div aria-hidden="true" class="absolute left-4 top-4 h-8 w-8 border-l border-t border-lime-200/60 border-t-lime-200/60 sm:left-5 sm:top-5 md:left-7 md:top-7"></div>
+    <div aria-hidden="true" class="absolute right-4 top-4 h-8 w-8 border-r border-t border-fuchsia-200/50 border-t-fuchsia-200/50 sm:right-5 sm:top-5 md:right-7 md:top-7"></div>
+    <div aria-hidden="true" class="absolute bottom-4 left-4 h-8 w-8 border-b border-l border-b-lime-200/40 border-l-lime-200/40 sm:bottom-5 sm:left-5 md:bottom-7 md:left-7"></div>
+    <div aria-hidden="true" class="absolute bottom-4 right-4 h-8 w-8 border-b border-r border-b-fuchsia-200/40 border-r-fuchsia-200/40 sm:bottom-5 sm:right-5 md:bottom-7 md:right-7"></div>
+    <div aria-hidden="true" class="absolute left-[8%] top-0 h-full w-px bg-white/[.07]">
+      <span class="absolute -left-1 top-[13%] h-2 w-2 bg-white/30"></span>
+      <span class="absolute -left-1 bottom-[16%] h-2 w-2 bg-lime-200/40"></span>
+    </div>
+    <div aria-hidden="true" class="absolute right-[8%] top-0 h-full w-px bg-white/[.07]">
+      <span class="absolute -left-1 top-[24%] h-2 w-2 bg-fuchsia-200/40"></span>
+      <span class="absolute -left-1 bottom-[22%] h-2 w-2 bg-white/25"></span>
+    </div>
+    <div aria-hidden="true" class="absolute left-0 top-[50%] h-px w-full bg-white/[.055]"></div>
+
+    <!-- palavra de abertura -->
+    <div aria-hidden="true" class="absolute inset-x-4 top-[5%] z-10 text-center opacity-0 sm:top-[4%]" id="introWord">
+      <p class="font-condensed tracking-tight text-white/20 text-[clamp(4rem,15vw,12rem)] leading-none" style="font-weight: 600;">Social Media</p>
+    </div>
+
+    <!-- headline -->
+    <div class="absolute inset-x-0 top-[17%] z-20 flex justify-center pointer-events-none sm:top-[16%]" data-depth="8">
+      <h1 aria-label="Pare o scroll." class="flex w-[92%] flex-wrap items-center justify-center gap-x-[clamp(.45rem,2vw,2rem)] text-center opacity-0" id="mainTitle">
+        <span aria-hidden="true" class="titleChunk font-condensed inline-block tracking-tight text-white text-[clamp(3.6rem,12.5vw,12rem)] leading-[.78]" style="font-weight: 700;">Pare</span>
+        <span aria-hidden="true" class="titleChunk font-condensed inline-block tracking-tight text-white text-[clamp(3.6rem,12.5vw,12rem)] leading-[.78]" style="font-weight: 700;">o</span>
+        <span aria-hidden="true" class="titleChunk font-condensed relative inline-block tracking-tight text-[#bef264] text-[clamp(3.6rem,12.5vw,12rem)] leading-[.78]" style="font-weight: 700;">scroll.
+          <svg aria-hidden="true" class="title-underline absolute left-0 -bottom-[.12em] w-full h-[.16em]" preserveAspectRatio="none" viewBox="0 0 300 24"><path d="M4 16 C 60 6, 140 4, 296 12" fill="none" stroke="#bef264" stroke-linecap="round" stroke-width="7"/></svg>
+        </span>
+      </h1>
+    </div>
+
+    <!-- foto flutuante -->
+    <div class="absolute inset-x-0 top-[28%] bottom-0 z-30 flex items-start justify-center pointer-events-none md:top-0 md:items-end" data-depth="18">
+      <div class="hero-photo relative h-[72%] md:h-[64%] max-w-[92%] aspect-[1100/1474] opacity-0 pointer-events-auto" id="photoWrap" style="perspective: 80rem;">
+        <div aria-hidden="true" class="absolute inset-[12%] rounded-full opacity-60 blur-3xl" style="background: radial-gradient(circle at 70% 30%, rgba(212,132,255,.45), transparent 55%), radial-gradient(circle at 25% 70%, rgba(196,255,96,.22), transparent 60%);"></div>
+        <img alt="Foto de Clara, social media" class="relative h-full w-full object-contain object-bottom" decoding="async" fetchpriority="high" id="photo" src="assets/clara.png"/>
+      </div>
+    </div>
+
+    <!-- selos de serviço (cards do Site 2 + sticker-float do Site 1) -->
+    <div aria-label="Áreas de atuação" class="absolute inset-0 z-40 pointer-events-none" data-depth="32" id="cardsLayer" role="list">
+      <div class="mediaCard absolute left-[3%] top-[37%] opacity-0 md:left-[27%] md:top-[42%]" role="listitem">
+        <div class="sticker" style="animation: 6s ease-in-out 0s infinite normal none running sticker-float-0;">
+          <span class="pointer-events-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/45 px-3 py-2 text-[10px] font-medium uppercase tracking-[.18rem] text-white/80 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-white/25 md:px-4 md:text-xs" style="box-shadow: rgba(0, 0, 0, 0.62) 0px 1.5rem 4rem, rgba(219, 45, 255, 0.2) 0px 0px 2rem;">
+            <iconify-icon class="text-base text-fuchsia-300" icon="solar:chart-2-linear" aria-hidden="true"></iconify-icon>Estratégia
+          </span>
+        </div>
+      </div>
+      <div class="mediaCard absolute left-[28%] top-[58%] hidden opacity-0 md:block" role="listitem">
+        <div class="sticker" style="animation: 6s ease-in-out 300ms infinite normal none running sticker-float-1;">
+          <span class="pointer-events-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/45 px-4 py-2 text-xs font-medium uppercase tracking-[.18rem] text-white/80 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-white/25" style="box-shadow: rgba(0, 0, 0, 0.62) 0px 1.5rem 4rem, rgba(197, 255, 90, 0.18) 0px 0px 2.5rem;">
+            <iconify-icon class="text-base text-lime-300" icon="solar:camera-linear" aria-hidden="true"></iconify-icon>Conteúdo
+          </span>
+        </div>
+      </div>
+      <div class="mediaCard absolute right-[3%] top-[29%] opacity-0 md:right-[25%] md:top-[44%]" role="listitem">
+        <div class="sticker" style="animation: 6s ease-in-out 600ms infinite normal none running sticker-float-2;">
+          <span class="pointer-events-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/45 px-3 py-2 text-[10px] font-medium uppercase tracking-[.18rem] text-white/80 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-white/25 md:px-4 md:text-xs" style="box-shadow: rgba(0, 0, 0, 0.62) 0px 1.5rem 4rem, rgba(44, 193, 255, 0.18) 0px 0px 2rem;">
+            <iconify-icon class="text-base text-cyan-300" icon="solar:users-group-rounded-linear" aria-hidden="true"></iconify-icon>Gestão de redes
+          </span>
+        </div>
+      </div>
+      <div class="mediaCard absolute right-[27%] top-[60%] hidden opacity-0 md:block" role="listitem">
+        <div class="sticker" style="animation: 6s ease-in-out 900ms infinite normal none running sticker-float-0;">
+          <span class="pointer-events-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/45 px-4 py-2 text-xs font-medium uppercase tracking-[.18rem] text-white/80 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-white/25" style="box-shadow: rgba(0, 0, 0, 0.55) 0px 1.5rem 4rem, rgba(250, 204, 21, 0.18) 0px 0px 2rem;">
+            <iconify-icon class="text-base text-yellow-300" icon="solar:graph-up-linear" aria-hidden="true"></iconify-icon>Tráfego pago
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- degradê inferior (Site 2) — mais alto no mobile para leitura do texto -->
+    <div aria-hidden="true" class="absolute inset-x-0 bottom-0 z-[45] h-[52%] bg-gradient-to-t from-black via-black/75 to-transparent pointer-events-none md:h-44"></div>
+
+    <!-- texto + CTAs -->
+    <div class="absolute inset-x-0 bottom-0 z-[60] flex flex-col gap-5 px-6 pb-9 pointer-events-none md:flex-row md:items-end md:justify-between md:gap-8 md:pl-[calc(8%+1.75rem)] md:pr-[calc(8%+1.75rem)] md:pb-[4.5rem]">
+      <div class="max-w-[25rem] pointer-events-auto">
+        <div class="reveal flex items-center gap-2 mb-3 md:mb-5" data-reveal-delay="0">
+          <span class="h-px w-8 bg-white/25"></span>
+          <span class="text-[9px] md:text-[11px] uppercase tracking-[0.15em] font-medium" style="color: rgba(255, 255, 255, 0.45);">Clara · Social Media &amp; Tráfego Pago</span>
+        </div>
+        <p class="reveal text-sm md:text-base leading-relaxed" data-reveal-delay="200" style="color: rgba(255, 255, 255, 0.7);">Estratégia, conteúdo e gestão de redes para sua marca ser vista, lembrada e escolhida. E, quando é hora de acelerar, <span class="text-white">tráfego pago</span> para levar a mensagem certa a quem está pronto para comprar.</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-3 pointer-events-auto md:justify-end">
+        <span class="reveal inline-flex" data-reveal-delay="300">
+          <span class="ticket-card">
+            <a class="btn-cta" href="#portfolio">Ver portfólio <iconify-icon class="btn-arrow text-lg" icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a>
+          </span>
+        </span>
+        <a class="reveal btn-ghost" data-reveal-delay="400" href="#contato"><iconify-icon class="text-lg" icon="solar:chat-round-line-linear" aria-hidden="true"></iconify-icon> Fale comigo</a>
+      </div>
+    </div>
+
+    <div aria-hidden="true" class="bg-white opacity-0 z-[70] absolute top-0 right-0 bottom-0 left-0 pointer-events-none" id="flash"></div>
+    <div class="absolute bottom-6 left-1/2 z-[80] hidden md:flex -translate-x-1/2 items-center gap-3 whitespace-nowrap rounded-full border border-white/10 bg-black/35 px-4 py-2 opacity-0 backdrop-blur-md" id="metaRail">
+      <span class="pulse-dot h-1.5 w-1.5 rounded-full bg-lime-300 shadow-[0_0_8px_rgba(190,242,100,0.8)]"></span>
+      <span class="text-[10px] font-medium uppercase tracking-[.22rem] text-white/60 md:text-xs">Social Media · Tráfego Pago</span>
+    </div>
+    <div aria-hidden="true" class="absolute left-7 top-7 z-[80] hidden items-center gap-2 text-xs font-medium uppercase tracking-[.28rem] text-white/45 opacity-0 sm:flex md:left-10 md:top-10" id="sequenceLabel">
+      <span class="h-px w-8 bg-white/25"></span>
+      <span>Social Media</span>
+    </div>
+  </div>
+</section>
+
+<!-- js: GSAP 3.12.5 (mesmo motor de animação do Site 2) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+/* Marquee superior (Site 1): duas trilhas espelhadas com marquee/marquee2. */
+(function () {
+  const items = ["Social Media", "Estratégia", "Conteúdo", "Gestão de redes", "Tráfego pago"];
+  const html = Array.from({ length: 2 }, () => items).flat().map((t) =>
+    `<span class="mx-6 text-[11px] font-medium whitespace-nowrap tracking-[0.2em] uppercase" style="color: rgba(255, 255, 255, 0.5);">${t} <span class="mx-6" style="color: rgba(255, 255, 255, 0.15);">✦</span></span>`
+  ).join("");
+  document.querySelectorAll("[data-marquee-track]").forEach((el) => { el.innerHTML = html; });
+})();
+
+/* Menu mobile (Site 2). */
+(function () {
+  const btn = document.getElementById("menuToggle");
+  const menu = document.getElementById("mobile-menu");
+  if (!btn || !menu) return;
+  btn.addEventListener("click", () => {
+    const open = menu.classList.toggle("hidden") === false;
+    btn.setAttribute("aria-expanded", String(open));
+  });
+  menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => {
+    menu.classList.add("hidden");
+    btn.setAttribute("aria-expanded", "false");
+  }));
+})();
+
+/* Hero: shader WebGL de ondas + timeline GSAP de entrada (adaptado de pulsewave-intro.js, Site 2),
+   revelação fade-in-up e sublinhado desenhado (Site 1), parallax por inércia (prism-background.js, Site 2). */
+function initHero() {
+  if (!window.gsap) {
+    setTimeout(initHero, 50);
+    return;
+  }
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const canvas = document.getElementById("webglLayer");
+  const gl = canvas ? canvas.getContext("webgl", { antialias: false, alpha: true, powerPreference: "high-performance" }) : null;
+  let webglRunning = false;
+
+  function resizeCanvas() {
+    if (!canvas) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = Math.max(1, Math.floor(rect.width * dpr));
+    canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+    if (gl) gl.viewport(0, 0, canvas.width, canvas.height);
+  }
+
+  let renderWebGL = function () {};
+
+  if (gl) {
+    const vertexSource = `
+      attribute vec2 position;
+      void main() {
+        gl_Position = vec4(position, 0.0, 1.0);
+      }
+    `;
+
+    const fragmentSource = `
+      precision mediump float;
+      uniform vec2 resolution;
+      uniform float time;
+
+      float line(vec2 uv, float y, float thickness) {
+        float d = abs(uv.y - y);
+        return smoothstep(thickness, 0.0, d);
+      }
+
+      void main() {
+        vec2 uv = gl_FragCoord.xy / resolution.xy;
+        vec2 p = uv * 2.0 - 1.0;
+        p.x *= resolution.x / resolution.y;
+
+        float wave1 = sin((p.x * 2.2) + time * 1.15) * 0.18 + sin((p.x * 4.5) - time * 0.72) * 0.055;
+        float wave2 = sin((p.x * 2.05) - time * 0.92 + 1.8) * 0.2 + sin((p.x * 5.0) + time * 0.68) * 0.045;
+        float wave3 = sin((p.x * 2.8) + time * 1.55 + 3.2) * 0.13;
+
+        float ribbonA = line(p, wave1 - 0.18, 0.035) + line(p, wave1 - 0.24, 0.014);
+        float ribbonB = line(p, wave2 + 0.08, 0.032) + line(p, wave2 + 0.16, 0.013);
+        float ribbonC = line(p, wave3 - 0.42, 0.042);
+
+        float centerGlow = 1.0 - smoothstep(0.0, 1.25, length(vec2(p.x * 0.75, p.y + 0.06)));
+        float sweep = smoothstep(-1.2, 0.45, p.x + sin(time * 0.4) * 0.25) * smoothstep(1.25, -0.2, p.x);
+
+        vec3 lime = vec3(0.72, 1.0, 0.26);
+        vec3 violet = vec3(0.86, 0.36, 1.0);
+        vec3 cyan = vec3(0.1, 0.72, 1.0);
+
+        vec3 color = vec3(0.0);
+        color += lime * ribbonA * (0.85 + sweep * 0.55);
+        color += violet * ribbonB * 1.15;
+        color += cyan * ribbonC * 0.42;
+        color += vec3(0.58, 0.18, 0.95) * centerGlow * 0.12;
+
+        float alpha = clamp((ribbonA + ribbonB + ribbonC) * 0.75 + centerGlow * 0.14, 0.0, 0.92);
+        gl_FragColor = vec4(color, alpha);
+      }
+    `;
+
+    function compileShader(type, source) {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, source);
+      gl.compileShader(shader);
+      return shader;
+    }
+
+    const program = gl.createProgram();
+    gl.attachShader(program, compileShader(gl.VERTEX_SHADER, vertexSource));
+    gl.attachShader(program, compileShader(gl.FRAGMENT_SHADER, fragmentSource));
+    gl.linkProgram(program);
+    gl.useProgram(program);
+
+    const buffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
+
+    const position = gl.getAttribLocation(program, "position");
+    gl.enableVertexAttribArray(position);
+    gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
+
+    const resolutionUniform = gl.getUniformLocation(program, "resolution");
+    const timeUniform = gl.getUniformLocation(program, "time");
+
+    renderWebGL = function (now) {
+      if (!webglRunning) return;
+      gl.uniform2f(resolutionUniform, canvas.width, canvas.height);
+      gl.uniform1f(timeUniform, now * 0.001);
+      gl.clearColor(0, 0, 0, 0);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+      requestAnimationFrame(renderWebGL);
+    };
+
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas, { passive: true });
+
+    // pausa o shader quando o hero sai da tela
+    new IntersectionObserver((entries) => {
+      const visible = entries.some((e) => e.isIntersecting);
+      if (visible && !webglRunning) {
+        webglRunning = true;
+        requestAnimationFrame(renderWebGL);
+      } else if (!visible) {
+        webglRunning = false;
+      }
+    }).observe(canvas);
+  }
+
+  const stage = document.getElementById("filmStage");
+  const introWord = document.getElementById("introWord");
+  const mainTitle = document.getElementById("mainTitle");
+  const photoWrap = document.getElementById("photoWrap");
+  const photo = document.getElementById("photo");
+  const cards = gsap.utils.toArray(".mediaCard");
+  const flash = document.getElementById("flash");
+  const metaRail = document.getElementById("metaRail");
+  const sequenceLabel = document.getElementById("sequenceLabel");
+  const abstractBase = document.getElementById("abstractBase");
+  const underline = document.querySelector(".title-underline");
+  const reveals = gsap.utils.toArray(".reveal");
+
+  function revealCopy() {
+    reveals.forEach((el) => {
+      el.style.animationDelay = (el.dataset.revealDelay || 0) + "ms";
+      el.classList.add("animate-fade-in-up");
+    });
+  }
+
+  if (prefersReduced) {
+    gsap.set(introWord, { opacity: 0.3 });
+    gsap.set([mainTitle, photoWrap, cards, metaRail, sequenceLabel], { opacity: 1 });
+    gsap.set(abstractBase, { opacity: 0.3 });
+    reveals.forEach((el) => { el.style.opacity = 1; });
+    return;
+  }
+
+  gsap.set(stage, { scale: 0.985 });
+  gsap.set(".titleChunk", { yPercent: 70, opacity: 0, filter: "blur(1rem)" });
+  gsap.set(photoWrap, { y: 120, scale: 0.78, rotation: -3, filter: "blur(.75rem)" });
+  gsap.set(cards, { y: 160, scale: 0.72, filter: "blur(.7rem)" });
+  gsap.set(abstractBase, { opacity: 0, scale: 1.35 });
+
+  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+  tl.to(stage, { scale: 1, duration: 1.4, ease: "power2.out" }, 0)
+    .to(metaRail, { opacity: 1, y: -4, duration: 0.9 }, 0.2)
+    .to(introWord, { opacity: 1, y: -8, scale: 1, duration: 1.1 }, 0.25)
+    .to(introWord, { opacity: 0.3, scale: 1.12, duration: 1.4, ease: "power2.inOut" }, 1.3)
+    .to(mainTitle, { opacity: 1, duration: 0.1 }, 1.15)
+    .to(".titleChunk", { yPercent: 0, opacity: 1, filter: "blur(0rem)", duration: 0.85, stagger: 0.07, ease: "back.out(1.35)" }, 1.18)
+    .to(sequenceLabel, { opacity: 1, duration: 0.45 }, 1.25)
+    // flash de câmera no instante em que a foto entra
+    .to(flash, { opacity: 0.78, duration: 0.08, ease: "none" }, 1.7)
+    .to(flash, { opacity: 0, duration: 0.45, ease: "power2.out" }, 1.78)
+    .to(abstractBase, { opacity: 0.3, scale: 1.14, duration: 1.1 }, 1.75)
+    .to(photoWrap, { opacity: 1, y: 0, scale: 1, rotation: 0, filter: "blur(0rem)", duration: 1.15, ease: "expo.out" }, 1.75)
+    .call(() => underline && underline.classList.add("is-drawn"), null, 2.05)
+    .call(revealCopy, null, 2.15)
+    .to(cards, { opacity: 1, y: 0, scale: 1, filter: "blur(0rem)", duration: 0.9, stagger: { each: 0.08, from: "center" }, ease: "back.out(1.5)" }, 2.5)
+    .call(startAmbient, null, 3.4);
+
+  function startAmbient() {
+    // flutuação da foto (movimento do "phone" no Site 2), agora contínua
+    gsap.to(photo, { y: -10, rotationZ: 0.8, duration: 2.2, yoyo: true, repeat: -1, ease: "sine.inOut" });
+    // deriva dos selos (deslocamentos dos mediaCards do Site 2)
+    gsap.to(cards, {
+      x: (i) => [-18, -10, 10, 18][i] || 0,
+      y: (i) => [6, -12, 10, -8][i] || 0,
+      duration: 2.4, yoyo: true, repeat: -1, ease: "sine.inOut"
+    });
+    gsap.to(mainTitle, { scale: 1.03, y: -6, duration: 4.2, yoyo: true, repeat: -1, ease: "power2.inOut" });
+
+    // rótulo de sequência percorrendo as frentes de trabalho
+    const labelText = sequenceLabel.querySelector("span:last-child");
+    const steps = ["Estratégia", "Conteúdo", "Gestão de redes", "Tráfego pago", "Social Media"];
+    const seq = gsap.timeline({ repeat: -1 });
+    steps.forEach((txt) => {
+      seq.to({}, { duration: 2.2 })
+        .to(sequenceLabel, { opacity: 0, duration: 0.3, ease: "power2.in" })
+        .set(labelText, { textContent: txt })
+        .to(sequenceLabel, { opacity: 1, duration: 0.45 });
+    });
+  }
+
+  // parallax por inércia (mesma interpolação do modo "hover" do prism-background.js)
+  const layers = gsap.utils.toArray("[data-depth]").map((el) => ({
+    depth: parseFloat(el.dataset.depth) || 0,
+    setX: gsap.quickSetter(el, "x", "px"),
+    setY: gsap.quickSetter(el, "y", "px")
+  }));
+  const pointer = { x: 0, y: 0 };
+  const current = { x: 0, y: 0 };
+  const INERT = 0.05;
+  const lerp = (a, b, t) => a + (b - a) * t;
+  if (window.matchMedia("(pointer: fine)").matches) {
+    window.addEventListener("pointermove", (e) => {
+      pointer.x = Math.max(-1, Math.min(1, (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2)));
+      pointer.y = Math.max(-1, Math.min(1, (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2)));
+    }, { passive: true });
+    document.addEventListener("mouseleave", () => { pointer.x = 0; pointer.y = 0; });
+    gsap.ticker.add(() => {
+      current.x = lerp(current.x, pointer.x, INERT);
+      current.y = lerp(current.y, pointer.y, INERT);
+      layers.forEach((l) => {
+        l.setX(-current.x * l.depth);
+        l.setY(-current.y * l.depth * 0.6);
+      });
+    });
+  }
+}
+initHero();
+</script>
+<!-- js: fundo WebGL em prisma (OGL) — mesmo asset do Site 2 -->
+<script type="module" src="assets/js/prism-background.js"></script>
+</body>
+</html>
