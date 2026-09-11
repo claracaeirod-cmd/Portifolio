@@ -82,13 +82,21 @@
   }
   .hero-photo:hover img { filter: drop-shadow(0 0 3.5rem rgba(214,126,255,.45)) drop-shadow(0 0 1.5rem rgba(197,255,92,.18)) drop-shadow(0 2rem 5rem rgba(0,0,0,.68)); }
 
+  /* ---- Experiência ---- */
+  /* floatBubble (Site 1 · custom-animations.css), usado nos logos flutuantes */
+  @keyframes floatBubble { 0% { transform: translateY(0) scale(1); opacity: .7 } 100% { transform: translateY(-14px) scale(1.05); opacity: 1 } }
+  .reveal-scroll { opacity: 0; }
+  /* glass-dark (Site 1 · index-BIISZeGo.css) */
+  .glass-dark { background: #ffffff0d; border: 1px solid rgba(255,255,255,.06); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 16px; }
+  .logo-mono { filter: brightness(0) invert(1); }
+
   @media (prefers-reduced-motion: reduce) {
-    .animate-marquee, .animate-marquee2, .ticket-card, .ticket-card:hover, .sticker, .pulse-dot { animation: none !important; }
-    .reveal, .animate-fade-in-up { opacity: 1 !important; animation: none !important; }
+    .animate-marquee, .animate-marquee2, .ticket-card, .ticket-card:hover, .sticker, .pulse-dot, .float-bubble { animation: none !important; }
+    .reveal, .reveal-scroll, .animate-fade-in-up { opacity: 1 !important; animation: none !important; }
     .title-underline { transform: scaleX(1); animation: none !important; }
   }
 </style>
-<noscript><style>.reveal,#mainTitle,#photoWrap,.mediaCard,#metaRail,#sequenceLabel{opacity:1!important}.title-underline{transform:scaleX(1)}</style></noscript>
+<noscript><style>.reveal,.reveal-scroll,#mainTitle,#photoWrap,.mediaCard,#metaRail,#sequenceLabel{opacity:1!important}.title-underline{transform:scaleX(1)}</style></noscript>
 </head>
 <body class="min-h-screen overflow-x-hidden antialiased selection:bg-[#6366F1]/30 selection:text-white text-zinc-400 relative">
 
@@ -132,7 +140,7 @@
       <span class="uppercase block text-xs font-normal text-white tracking-tighter font-sans">CLARA.SOCIAL</span>
     </a>
     <div class="hidden md:flex gap-6 px-6 items-center">
-      <a class="hover:text-white transition-colors text-xs text-zinc-500 tracking-widest font-mono" href="#sobre">Sobre</a>
+      <a class="hover:text-white transition-colors text-xs text-zinc-500 tracking-widest font-mono" href="#experiencia">Experiência</a>
       <a class="hover:text-white transition-colors text-xs text-zinc-500 tracking-widest font-mono" href="#servicos">Serviços</a>
       <a class="hover:text-white transition-colors text-xs text-zinc-500 tracking-widest font-mono" href="#portfolio">Portfólio</a>
     </div>
@@ -149,7 +157,7 @@
   </nav>
   <div class="hidden md:hidden absolute top-[calc(100%+0.5rem)] left-4 right-4 bg-[#18181B]/95 backdrop-blur-xl border border-white/5 rounded-[1.5rem] p-6 shadow-2xl shadow-black/80 flex flex-col gap-5" id="mobile-menu">
     <div class="flex flex-col gap-4">
-      <a class="text-left text-xs text-zinc-400 hover:text-white font-mono tracking-widest transition-colors" href="#sobre">Sobre</a>
+      <a class="text-left text-xs text-zinc-400 hover:text-white font-mono tracking-widest transition-colors" href="#experiencia">Experiência</a>
       <a class="text-left text-xs text-zinc-400 hover:text-white font-mono tracking-widest transition-colors" href="#servicos">Serviços</a>
       <a class="text-left text-xs text-zinc-400 hover:text-white font-mono tracking-widest transition-colors" href="#portfolio">Portfólio</a>
     </div>
@@ -274,6 +282,226 @@
       <span class="h-px w-8 bg-white/25"></span>
       <span>Social Media</span>
     </div>
+  </div>
+</section>
+
+<!-- experiência (Site 2: cabeçalho + grade da seção architecture, cards do node-cluster, lista "Nós Ativos";
+     Site 1: grade de logos da tools-section, floatBubble, glass-dark e fade-in-up no scroll) -->
+<section aria-labelledby="exp-title" class="relative z-20 w-full max-w-6xl mx-auto px-4 pt-24 pb-24 flex flex-col gap-12 border-t border-white/10 text-white scroll-mt-28" id="experiencia">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+    <div class="reveal-scroll" data-reveal-delay="0">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#6366F1] animate-pulse shadow-[0_0_8px_rgba(99,102,241,0.8)]"></span>
+        <span class="text-xs font-mono tracking-widest text-zinc-400 uppercase">Experiência</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-light tracking-tight text-white leading-tight" id="exp-title">Da prática<br class="hidden md:block"/> à estratégia.</h2>
+      <p class="mt-6 text-zinc-400 text-sm md:text-base font-light leading-relaxed max-w-lg">Formação acadêmica, cursos especializados e três anos à frente de uma marca de moda: uma trajetória que une vendas, gestão, dados e criatividade a serviço de marcas nas redes.</p>
+    </div>
+
+    <!-- logos flutuantes: cards do node-cluster (Site 2) + floatBubble (Site 1) + parallax de scroll e de mouse -->
+    <div aria-label="Instituições e experiências" class="relative h-[360px] md:h-[400px]" id="logoCluster" role="list">
+      <div aria-hidden="true" class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div class="w-[320px] h-[320px] rounded-full opacity-40 blur-[80px]" style="background: radial-gradient(circle at center, #6366F1, transparent 60%);"></div>
+      </div>
+      <canvas aria-hidden="true" class="absolute inset-0 w-full h-full opacity-80" id="canvas-core" style="touch-action: none;"></canvas>
+
+      <div class="absolute left-[2%] top-[4%] md:left-[6%]" data-scroll-speed="-46" role="listitem">
+        <div data-depth="14">
+          <div class="float-bubble" style="animation: 2s ease-in-out 0s infinite alternate none running floatBubble;">
+            <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-white/10 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
+              <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
+                <img alt="Logo Vende-C" class="logo-mono h-9 md:h-10 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" src="assets/experiencia/logo-vendec.png"/>
+                <span class="text-[10px] md:text-xs font-mono tracking-widest uppercase text-white/60 group-hover:text-white transition-colors duration-300">Vende-C</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute right-[2%] top-[12%] md:right-[4%]" data-scroll-speed="-22" role="listitem">
+        <div data-depth="24">
+          <div class="float-bubble" style="animation: 2.6s ease-in-out 0.2s infinite alternate none running floatBubble;">
+            <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-[#6366F1]/30 via-white/5 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
+              <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
+                <img alt="Logo UERJ" class="logo-mono h-11 md:h-12 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" src="assets/experiencia/logo-uerj.png"/>
+                <span class="text-[10px] md:text-xs font-mono tracking-widest uppercase text-white/60 group-hover:text-white transition-colors duration-300">UERJ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute left-[1%] bottom-[6%] md:left-[14%]" data-scroll-speed="30" role="listitem">
+        <div data-depth="30">
+          <div class="float-bubble" style="animation: 2.3s ease-in-out 0.1s infinite alternate none running floatBubble;">
+            <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-white/10 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
+              <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
+                <img alt="Logo Stylee" class="logo-mono h-8 md:h-9 w-auto max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" src="assets/experiencia/logo-stylee.png"/>
+                <span class="text-[10px] md:text-xs font-mono tracking-widest uppercase text-white/60 group-hover:text-white transition-colors duration-300">Stylee</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute right-[1%] bottom-[2%] md:right-[10%]" data-scroll-speed="52" role="listitem">
+        <div data-depth="18">
+          <div class="float-bubble" style="animation: 2.9s ease-in-out 0.3s infinite alternate none running floatBubble;">
+            <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-white/10 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
+              <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
+                <img alt="Logo Asimov" class="logo-mono h-6 md:h-7 w-auto max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" src="assets/experiencia/logo-asimov.png"/>
+                <span class="text-[10px] md:text-xs font-mono tracking-widest uppercase text-white/60 group-hover:text-white transition-colors duration-300">Asimov</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+    <!-- 01 · Vende-C -->
+    <article class="reveal-scroll md:col-span-7 bg-[#18181B]/90 backdrop-blur-xl border border-white/5 rounded-[19px] overflow-hidden relative group hover:border-white/10 transition-colors duration-700 flex flex-col md:flex-row shadow-2xl shadow-black/80" data-reveal-delay="0">
+      <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-br from-[#6366F1]/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+      <div class="p-8 md:p-10 md:w-1/2 flex flex-col relative z-10">
+        <div class="flex items-center gap-3 mb-6">
+          <iconify-icon class="text-xl text-[#6366F1]" icon="solar:graph-up-linear" aria-hidden="true"></iconify-icon>
+          <span class="text-xs font-mono tracking-widest text-zinc-500 uppercase">01 · Curso · Vendas</span>
+        </div>
+        <h3 class="text-2xl font-normal tracking-tight text-white mb-4">Vende-C</h3>
+        <p class="text-sm font-light text-zinc-400 leading-relaxed">Formação prática em vendas: abordagem ao cliente, técnicas de venda, negociação e construção de funil comercial, do primeiro contato ao fechamento. Uma base que conecta conteúdo nas redes ao que realmente importa para a marca: vender.</p>
+        <div class="mt-8 flex flex-wrap gap-2">
+          <span class="inline-flex items-center gap-2 text-xs font-mono text-[#6366F1] bg-[#6366F1]/10 border border-[#6366F1]/20 px-2.5 py-1.5 rounded-md"><span class="w-1 h-1 rounded-full bg-[#6366F1]"></span>Negociação</span>
+          <span class="inline-flex items-center gap-2 text-xs font-mono text-[#6366F1] bg-[#6366F1]/10 border border-[#6366F1]/20 px-2.5 py-1.5 rounded-md"><span class="w-1 h-1 rounded-full bg-[#6366F1]"></span>Funil comercial</span>
+          <span class="inline-flex items-center gap-2 text-xs font-mono text-[#6366F1] bg-[#6366F1]/10 border border-[#6366F1]/20 px-2.5 py-1.5 rounded-md"><span class="w-1 h-1 rounded-full bg-[#6366F1]"></span>Abordagem</span>
+        </div>
+      </div>
+      <figure class="relative h-72 md:h-auto md:min-h-[26rem] md:w-1/2 bg-black/40 border-t md:border-t-0 md:border-l border-white/5 overflow-hidden">
+        <img alt="Clara durante o curso Vende-C, no auditório" class="absolute inset-0 w-full h-full object-cover object-[40%_center] scale-105 group-hover:scale-100 transition-transform duration-1000 ease-out" decoding="async" loading="lazy" src="assets/experiencia/vendec-curso.jpg"/>
+        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-[#18181B] via-[#18181B]/10 to-transparent"></div>
+        <div aria-hidden="true" class="absolute top-6 right-6 w-2 h-2 border-t border-r border-[#6366F1]/50"></div>
+        <div aria-hidden="true" class="absolute bottom-6 left-6 w-2 h-2 border-b border-l border-[#6366F1]/50"></div>
+        <figcaption class="absolute bottom-5 left-10 right-6 flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-white/70"><span class="h-1.5 w-1.5 rounded-full bg-[#bef264] shadow-[0_0_8px_rgba(190,242,100,0.8)]"></span>Em sala · Vende-C</figcaption>
+      </figure>
+    </article>
+
+    <!-- 02 · UERJ -->
+    <article class="reveal-scroll md:col-span-5 bg-[#18181B]/90 backdrop-blur-xl border border-white/5 rounded-[19px] overflow-hidden relative group hover:border-white/10 transition-colors duration-700 flex flex-col shadow-2xl shadow-black/80" data-reveal-delay="120">
+      <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#6366F1]/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+      <a aria-label="Abrir o certificado de extensão da UERJ em tamanho real" class="block h-72 relative bg-black/40 border-b border-white/5 overflow-hidden" href="assets/experiencia/uerj-certificado.jpg" rel="noopener" target="_blank">
+        <div aria-hidden="true" class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.12),transparent_70%)]"></div>
+        <img alt="Certificado da Faculdade de Administração e Finanças da UERJ pela visita técnica ao Porto do Rio de Janeiro (dados pessoais ocultados)" class="absolute left-1/2 top-8 w-[52%] -translate-x-1/2 -rotate-3 rounded-[4px] shadow-2xl shadow-black transition-transform duration-700 ease-out group-hover:rotate-0 group-hover:-translate-y-2 group-hover:scale-[1.03]" decoding="async" loading="lazy" src="assets/experiencia/uerj-certificado.jpg"/>
+        <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#18181B] to-transparent"></div>
+        <div aria-hidden="true" class="absolute top-6 left-6 w-2 h-2 border-t border-l border-[#6366F1]/50"></div>
+        <div aria-hidden="true" class="absolute top-6 right-6 w-2 h-2 border-t border-r border-[#6366F1]/50"></div>
+        <span class="absolute bottom-4 left-6 right-6 flex items-center justify-between text-[10px] font-mono uppercase tracking-widest text-white/60">
+          <span>Extensão · FAF/UERJ · 2025</span>
+          <iconify-icon class="text-sm text-zinc-300" icon="solar:maximize-square-linear" aria-hidden="true"></iconify-icon>
+        </span>
+      </a>
+      <div class="p-8 md:p-10 relative z-10 flex-1 flex flex-col">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+          <div class="flex items-center gap-3">
+            <iconify-icon class="text-xl text-[#6366F1]" icon="solar:square-academic-cap-linear" aria-hidden="true"></iconify-icon>
+            <span class="whitespace-nowrap text-xs font-mono tracking-widest text-zinc-500 uppercase">02 · Graduação</span>
+          </div>
+          <span class="inline-flex items-center gap-2 whitespace-nowrap px-2 py-0.5 rounded border border-[#bef264]/20 bg-[#bef264]/10 text-[10px] font-mono text-white tracking-widest uppercase"><span class="pulse-dot w-1.5 h-1.5 rounded-full bg-[#bef264]"></span>Em andamento</span>
+        </div>
+        <h3 class="text-2xl font-normal tracking-tight text-white mb-4">Administração · UERJ</h3>
+        <p class="text-sm font-light text-zinc-400 leading-relaxed">Graduação em Administração na Universidade do Estado do Rio de Janeiro. Além das aulas, participação em diversas atividades extracurriculares, como a visita técnica ao Porto do Rio de Janeiro, evento de extensão da Faculdade de Administração e Finanças, que ampliam a experiência prática com diferentes mecanismos organizacionais.</p>
+      </div>
+    </article>
+
+    <!-- 03 · Stylee -->
+    <article class="reveal-scroll md:col-span-12 bg-[#18181B]/90 backdrop-blur-xl border border-white/5 rounded-[19px] overflow-hidden relative group hover:border-white/10 transition-colors duration-700 flex flex-col md:flex-row shadow-2xl shadow-black/80" data-reveal-delay="0">
+      <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-r from-[#6366F1]/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+      <div class="p-8 md:p-12 md:w-6/12 lg:w-5/12 flex flex-col justify-center relative z-10">
+        <div class="flex items-center gap-3 mb-6">
+          <iconify-icon class="text-xl text-[#6366F1]" icon="solar:shop-2-linear" aria-hidden="true"></iconify-icon>
+          <span class="text-xs font-mono tracking-widest text-zinc-500 uppercase">03 · Negócio próprio · Moda</span>
+        </div>
+        <h3 class="text-2xl font-normal tracking-tight text-white mb-2">Stylee · loja de roupas</h3>
+        <p class="flex items-baseline gap-3 mb-5"><span class="font-condensed text-6xl md:text-7xl font-bold text-white leading-none">3</span><span class="text-xs font-mono uppercase tracking-widest text-[#6366F1]">anos à frente da marca</span></p>
+        <p class="text-sm font-light text-zinc-400 leading-relaxed">Três anos à frente da Stylee trouxeram vivência prática em design, em social media e, principalmente, no universo da moda. Foi nessa rotina, investindo no próprio negócio, que veio o aprendizado de tráfego pago na prática: campanha a campanha, com o resultado direto no caixa.</p>
+        <div class="mt-8 flex flex-wrap gap-2">
+          <span class="inline-flex items-center gap-2 text-xs font-mono text-[#6366F1] bg-[#6366F1]/10 border border-[#6366F1]/20 px-2.5 py-1.5 rounded-md"><span class="w-1 h-1 rounded-full bg-[#6366F1]"></span>Moda</span>
+          <span class="inline-flex items-center gap-2 text-xs font-mono text-[#6366F1] bg-[#6366F1]/10 border border-[#6366F1]/20 px-2.5 py-1.5 rounded-md"><span class="w-1 h-1 rounded-full bg-[#6366F1]"></span>Design</span>
+          <span class="inline-flex items-center gap-2 text-xs font-mono text-[#6366F1] bg-[#6366F1]/10 border border-[#6366F1]/20 px-2.5 py-1.5 rounded-md"><span class="w-1 h-1 rounded-full bg-[#6366F1]"></span>Social media</span>
+          <span class="inline-flex items-center gap-2 text-xs font-mono text-[#0a0a0a] bg-[#bef264] border border-[#bef264] px-2.5 py-1.5 rounded-md"><span class="w-1 h-1 rounded-full bg-black"></span>Tráfego pago</span>
+        </div>
+      </div>
+      <div class="h-64 md:h-auto md:min-h-[22rem] md:w-6/12 lg:w-7/12 relative bg-black/40 border-t md:border-t-0 md:border-l border-white/5 overflow-hidden">
+        <div aria-hidden="true" class="hidden md:block absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#18181B] to-transparent z-10"></div>
+        <canvas aria-hidden="true" class="absolute inset-0 w-full h-full" id="canvas-orbit" style="touch-action: none;"></canvas>
+        <div class="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+          <div class="glass-dark rounded-2xl px-6 py-4 translate-x-5 transition-transform duration-700 group-hover:scale-105">
+            <img alt="Logo Stylee" class="logo-mono h-9 w-auto opacity-80" src="assets/experiencia/logo-stylee.png"/>
+          </div>
+        </div>
+        <div aria-hidden="true" class="absolute top-6 right-6 w-2 h-2 border-t border-r border-[#6366F1]/30 opacity-50 z-20"></div>
+      </div>
+    </article>
+
+    <!-- 04 · Asimov -->
+    <article class="reveal-scroll md:col-span-5 bg-[#18181B]/90 backdrop-blur-xl border border-white/5 rounded-[19px] overflow-hidden relative group hover:border-white/10 transition-colors duration-700 flex flex-col shadow-2xl shadow-black/80" data-reveal-delay="0">
+      <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#6366F1]/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+      <div class="h-56 relative bg-black/40 border-b border-white/5 overflow-hidden">
+        <canvas aria-hidden="true" class="absolute inset-0 w-full h-full" id="canvas-network" style="touch-action: none;"></canvas>
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div class="glass-dark rounded-xl px-5 py-3 transition-transform duration-700 group-hover:scale-105">
+            <img alt="Logo Asimov" class="logo-mono h-6 w-auto opacity-80" src="assets/experiencia/logo-asimov.png"/>
+          </div>
+        </div>
+        <div aria-hidden="true" class="absolute top-6 left-6 w-2 h-2 border-t border-l border-[#6366F1]/30 opacity-50"></div>
+        <div aria-hidden="true" class="absolute bottom-6 right-6 w-2 h-2 border-b border-r border-[#6366F1]/30 opacity-50"></div>
+      </div>
+      <div class="p-8 md:p-10 relative z-10 flex-1 flex flex-col">
+        <div class="flex items-center gap-3 mb-6">
+          <iconify-icon class="text-xl text-[#6366F1]" icon="solar:cpu-linear" aria-hidden="true"></iconify-icon>
+          <span class="text-xs font-mono tracking-widest text-zinc-500 uppercase">04 · Curso · Dados e IA</span>
+        </div>
+        <h3 class="text-2xl font-normal tracking-tight text-white mb-4">Asimov</h3>
+        <p class="text-sm font-light text-zinc-400 leading-relaxed">Análise de dados e aplicação de inteligência artificial em processos de negócio, com destaque para a <span class="text-white">gestão de IA</span>: escolher as ferramentas certas, estruturar fluxos e usar dados para decidir melhor, do planejamento de conteúdo à otimização de campanhas.</p>
+        <div class="mt-8 flex flex-wrap gap-2">
+          <span class="inline-flex items-center gap-2 text-xs font-mono text-[#6366F1] bg-[#6366F1]/10 border border-[#6366F1]/20 px-2.5 py-1.5 rounded-md"><span class="w-1 h-1 rounded-full bg-[#6366F1]"></span>Análise de dados</span>
+          <span class="inline-flex items-center gap-2 text-xs font-mono text-[#6366F1] bg-[#6366F1]/10 border border-[#6366F1]/20 px-2.5 py-1.5 rounded-md"><span class="w-1 h-1 rounded-full bg-[#6366F1]"></span>Gestão de IA</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 05 · Competências (lista "Nós Ativos" do Site 2) -->
+    <article class="reveal-scroll md:col-span-7 relative rounded-[19px] bg-zinc-900/90 border border-white/5 p-8 md:p-10 flex flex-col shadow-2xl shadow-black/80" data-reveal-delay="120">
+      <div class="flex items-center gap-2 mb-6">
+        <div class="w-4 h-[2px] bg-[#6366F1]"></div>
+        <h3 class="text-sm font-medium tracking-wide uppercase text-white">Competências técnicas</h3>
+      </div>
+      <p class="text-sm font-light text-zinc-400 leading-relaxed mb-6 max-w-xl">Ferramentas de design dominadas na prática, ao longo dos anos de Stylee, criando peças, campanhas e conteúdo de verdade.</p>
+      <div class="grid grid-cols-[40px_1fr_auto] gap-4 mb-3 text-[10px] font-normal text-zinc-500 uppercase tracking-widest px-2">
+        <span></span><span>Ferramenta</span><span class="text-right">Uso</span>
+      </div>
+      <ul class="flex flex-col gap-2">
+        <li class="grid grid-cols-[40px_1fr_auto] gap-4 items-center group/row hover:bg-white/5 p-2 rounded-lg transition-colors">
+          <span class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center"><iconify-icon class="text-lg" icon="simple-icons:figma" aria-hidden="true"></iconify-icon></span>
+          <span class="min-w-0"><span class="block text-sm font-medium text-white truncate group-hover/row:text-[#6366F1] transition-colors">Figma</span><span class="block text-xs text-zinc-500 truncate">Layouts, peças e protótipos</span></span>
+          <span class="text-xs font-medium text-[#6366F1] text-right">Design</span>
+        </li>
+        <li class="grid grid-cols-[40px_1fr_auto] gap-4 items-center group/row hover:bg-white/5 p-2 rounded-lg transition-colors">
+          <span class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center"><iconify-icon class="text-lg" icon="simple-icons:canva" aria-hidden="true"></iconify-icon></span>
+          <span class="min-w-0"><span class="block text-sm font-medium text-white truncate group-hover/row:text-[#6366F1] transition-colors">Canva</span><span class="block text-xs text-zinc-500 truncate">Conteúdo ágil para as redes</span></span>
+          <span class="text-xs font-medium text-[#6366F1] text-right">Social</span>
+        </li>
+        <li class="grid grid-cols-[40px_1fr_auto] gap-4 items-center group/row hover:bg-white/5 p-2 rounded-lg transition-colors">
+          <span class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center"><iconify-icon class="text-lg" icon="simple-icons:adobe" aria-hidden="true"></iconify-icon></span>
+          <span class="min-w-0"><span class="block text-sm font-medium text-white truncate group-hover/row:text-[#6366F1] transition-colors">Adobe</span><span class="block text-xs text-zinc-500 truncate">Edição e acabamento de imagem</span></span>
+          <span class="text-xs font-medium text-[#6366F1] text-right">Design</span>
+        </li>
+      </ul>
+      <div class="glass-dark mt-8 px-6 py-5">
+        <p class="text-[13px] leading-relaxed text-white/60">Hoje, um conhecimento <span class="text-white">completo e consolidado</span> nas três frentes do trabalho:</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="rounded-full bg-lime-300 px-4 py-2 text-xs font-medium text-black">Design</span>
+          <span class="rounded-full bg-fuchsia-300 px-4 py-2 text-xs font-medium text-black">Social media</span>
+          <span class="rounded-full bg-cyan-300 px-4 py-2 text-xs font-medium text-black">Tráfego pago</span>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -530,6 +758,54 @@ function initHero() {
 }
 initHero();
 </script>
+<script>
+/* Experiência: fade-in-up (Site 1) disparado no scroll + parallax de scroll dos logos,
+   com a mesma suavização por inércia usada no parallax do hero. */
+(function () {
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const items = document.querySelectorAll(".reveal-scroll");
+  if (reduced || !("IntersectionObserver" in window)) {
+    items.forEach((el) => { el.style.opacity = 1; });
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        el.style.animationDelay = (el.dataset.revealDelay || 0) + "ms";
+        el.classList.add("animate-fade-in-up");
+        io.unobserve(el);
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+    items.forEach((el) => io.observe(el));
+  }
+
+  function initScrollParallax() {
+    if (!window.gsap) {
+      setTimeout(initScrollParallax, 50);
+      return;
+    }
+    const layers = gsap.utils.toArray("[data-scroll-speed]").map((el) => ({
+      el,
+      speed: parseFloat(el.dataset.scrollSpeed) || 0,
+      current: 0,
+      setY: gsap.quickSetter(el, "y", "px")
+    }));
+    gsap.ticker.add(() => {
+      const vh = window.innerHeight;
+      layers.forEach((l) => {
+        const r = l.el.parentElement.getBoundingClientRect();
+        if (r.bottom < -vh || r.top > vh * 2) return;
+        const progress = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh / 2) / vh));
+        l.current += (progress * l.speed - l.current) * 0.08;
+        l.setY(l.current);
+      });
+    });
+  }
+  if (!reduced) initScrollParallax();
+})();
+</script>
+<!-- js: animações de canvas da seção architecture (Site 2), reaproveitadas na Experiência -->
+<script src="assets/js/canvas-visuals.js"></script>
 <!-- js: fundo WebGL em prisma (OGL) — mesmo asset do Site 2 -->
 <script type="module" src="assets/js/prism-background.js"></script>
 </body>
