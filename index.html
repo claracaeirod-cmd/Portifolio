@@ -44,6 +44,11 @@
 
   .animate-marquee { animation: marquee 30s linear infinite; }
   .animate-marquee2 { animation: marquee2 30s linear infinite; }
+  /* marquee do case: uma única trilha com a largura do próprio conteúdo (w-max) e o conjunto de
+     itens em duas cópias idênticas; deslocar exatamente -50% (uma cópia) fecha o loop sem salto
+     e sem trilhas andando em velocidades diferentes, em qualquer largura de tela */
+  @keyframes marquee-half { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+  .case-marquee-track { animation: marquee-half 30s linear infinite; }
   .reveal { opacity: 0; }
   .animate-fade-in-up { animation: fade-in-up .7s cubic-bezier(.16,1,.3,1) forwards; opacity: 0; }
   .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
@@ -119,7 +124,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .animate-marquee, .animate-marquee2, .ticket-card, .ticket-card:hover, .sticker, .pulse-dot, .float-bubble { animation: none !important; }
+    .animate-marquee, .animate-marquee2, .case-marquee-track, .ticket-card, .ticket-card:hover, .sticker, .pulse-dot, .float-bubble { animation: none !important; }
     .reveal, .reveal-scroll, .animate-fade-in-up { opacity: 1 !important; animation: none !important; }
     .title-underline { transform: scaleX(1); animation: none !important; }
   }
@@ -898,33 +903,29 @@
 
   <!-- faixa em marquee (Site 1 · certificate) -->
   <div aria-hidden="true" class="reveal-scroll relative overflow-hidden rounded-full border border-white/10 bg-white/[0.03] py-2.5" data-reveal-delay="60">
-    <div class="flex items-center gap-10 whitespace-nowrap animate-marquee">
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">IA Manutenção<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Social media<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Automação N8N<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Tráfego pago<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Operação contínua<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">IA Manutenção<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Social media<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Automação N8N<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Tráfego pago<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Operação contínua<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">IA Manutenção<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Social media<span class="text-[#6366F1]">✦</span></span>
-    </div>
-    <div class="flex items-center gap-10 whitespace-nowrap animate-marquee2 absolute inset-y-0 left-0">
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">IA Manutenção<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Social media<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Automação N8N<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Tráfego pago<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Operação contínua<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">IA Manutenção<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Social media<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Automação N8N<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Tráfego pago<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Operação contínua<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">IA Manutenção<span class="text-[#6366F1]">✦</span></span>
-      <span class="flex items-center gap-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Social media<span class="text-[#6366F1]">✦</span></span>
+    <!-- trilha única: duas cópias idênticas do conjunto (cada item leva seu espaçamento em pr-10),
+         então a animação desloca exatamente uma cópia (-50%) e emenda sem sobreposição -->
+    <div class="case-marquee-track flex w-max items-center whitespace-nowrap">
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">IA Manutenção<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Social media<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Automação N8N<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Tráfego pago<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Operação contínua<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">IA Manutenção<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Social media<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Automação N8N<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Tráfego pago<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Operação contínua<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">IA Manutenção<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Social media<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Automação N8N<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Tráfego pago<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Operação contínua<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">IA Manutenção<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Social media<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Automação N8N<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Tráfego pago<span class="text-[#6366F1]">✦</span></span>
+      <span class="flex items-center gap-10 pr-10 text-[11px] font-mono font-medium uppercase tracking-[0.18em] text-white/50">Operação contínua<span class="text-[#6366F1]">✦</span></span>
     </div>
   </div>
 
