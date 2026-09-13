@@ -26,6 +26,9 @@
   }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
   .font-condensed { font-family: 'Barlow Condensed', Impact, sans-serif; }
+  /* rolagem: overflow-x: clip corta o excesso lateral sem transformar o body em container de rolagem
+     (com hidden, navegadores mobile passam a rolar o body e a rolagem engasga); fallback p/ antigos */
+  @supports not (overflow: clip) { body { overflow-x: hidden; } }
 
   /* ---- Site 1 · keyframes originais (index-BIISZeGo.css) ---- */
   @keyframes marquee { 0% { transform: translate(0) } to { transform: translate(-100%) } }
@@ -121,7 +124,7 @@
 <noscript><style>.reveal,.reveal-scroll,#mainTitle,#photoWrap,.mediaCard,#metaRail,#sequenceLabel{opacity:1!important}.title-underline{transform:scaleX(1)}</style></noscript>
 <noscript><style>.svc-bar{height:var(--h)}</style></noscript>
 </head>
-<body class="min-h-screen overflow-x-hidden antialiased selection:bg-[#6366F1]/30 selection:text-white text-zinc-400 relative">
+<body class="min-h-screen overflow-x-clip antialiased selection:bg-[#6366F1]/30 selection:text-white text-zinc-400 relative">
 
 <!-- prism-background (Site 2) -->
 <div class="fixed inset-0 z-[-1] pointer-events-none w-full h-full opacity-60 mix-blend-screen" id="prism-container"></div>
@@ -332,7 +335,7 @@
         <div data-depth="14">
           <div class="float-bubble" style="animation: 2s ease-in-out 0s infinite alternate none running floatBubble;">
             <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-white/10 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
-              <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
+              <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
                 <img alt="Logo Vende-C" class="logo-mono h-9 md:h-10 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" src="assets/experiencia/logo-vendec.png"/>
                 <span class="text-[10px] md:text-xs font-mono tracking-widest uppercase text-white/60 group-hover:text-white transition-colors duration-300">Vende-C</span>
               </div>
@@ -344,7 +347,7 @@
         <div data-depth="24">
           <div class="float-bubble" style="animation: 2.6s ease-in-out 0.2s infinite alternate none running floatBubble;">
             <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-[#6366F1]/30 via-white/5 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
-              <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
+              <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
                 <img alt="Logo UERJ" class="logo-mono h-11 md:h-12 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" src="assets/experiencia/logo-uerj.png"/>
                 <span class="text-[10px] md:text-xs font-mono tracking-widest uppercase text-white/60 group-hover:text-white transition-colors duration-300">UERJ</span>
               </div>
@@ -357,7 +360,7 @@
           <div data-depth="30">
             <div class="float-bubble" style="animation: 2.3s ease-in-out 0.1s infinite alternate none running floatBubble;">
               <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-white/10 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
-                <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
+                <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
                   <img alt="Logo Stylee" class="logo-mono h-8 md:h-9 w-auto max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" src="assets/experiencia/logo-stylee.png"/>
                   <span class="text-[10px] md:text-xs font-mono tracking-widest uppercase text-white/60 group-hover:text-white transition-colors duration-300">Stylee</span>
                 </div>
@@ -381,7 +384,7 @@
             <div class="col-span-2" role="listitem">
               <div class="float-bubble" style="animation: 2.9s ease-in-out 0.3s infinite alternate none running floatBubble;">
                 <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-[#6366F1]/30 via-white/5 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
-                  <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
+                  <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
                     <img alt="Logo Asimov" class="logo-mono h-6 md:h-7 w-auto max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" src="assets/experiencia/logo-asimov.png"/>
                     <span class="text-[10px] md:text-xs font-mono tracking-widest uppercase text-white/60 group-hover:text-white transition-colors duration-300">Asimov</span>
                   </div>
@@ -391,7 +394,7 @@
             <div role="listitem">
               <div class="float-bubble" style="animation: 3.2s ease-in-out 0.4s infinite alternate none running floatBubble;">
                 <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-[#6366F1]/30 via-white/5 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
-                  <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
+                  <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
                     <img alt="Logo Claude" class="logo-mono h-9 md:h-10 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" src="assets/experiencia/logo-claude.svg"/>
                     <span class="text-[10px] md:text-xs font-mono tracking-widest uppercase text-white/60 group-hover:text-white transition-colors duration-300">Claude</span>
                   </div>
@@ -401,7 +404,7 @@
             <div role="listitem">
               <div class="float-bubble" style="animation: 3.5s ease-in-out 0.5s infinite alternate none running floatBubble;">
                 <div class="group p-[1px] rounded-[20px] bg-gradient-to-b from-[#6366F1]/30 via-white/5 to-transparent shadow-2xl shadow-black/80 transition-transform duration-500 hover:-translate-y-2">
-                  <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
+                  <div class="w-36 md:w-44 h-28 md:h-32 rounded-[19px] bg-[#18181B]/90 border border-white/5 flex flex-col items-center justify-center gap-4 px-5">
                     <img alt="Logo N8N" class="logo-mono h-7 md:h-8 w-auto max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" src="assets/experiencia/logo-n8n.png"/>
                     <span class="text-[10px] md:text-xs font-mono tracking-widest uppercase text-white/60 group-hover:text-white transition-colors duration-300">N8N</span>
                   </div>
@@ -416,7 +419,7 @@
 
   <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
     <!-- 01 · Vende-C -->
-    <article class="reveal-scroll md:col-span-7 bg-[#18181B]/90 backdrop-blur-xl border border-white/5 rounded-[19px] overflow-hidden relative group hover:border-white/10 transition-colors duration-700 flex flex-col md:flex-row shadow-2xl shadow-black/80" data-reveal-delay="0">
+    <article class="reveal-scroll md:col-span-7 bg-[#18181B]/90 border border-white/5 rounded-[19px] overflow-hidden relative group hover:border-white/10 transition-colors duration-700 flex flex-col md:flex-row shadow-2xl shadow-black/80" data-reveal-delay="0">
       <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-br from-[#6366F1]/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
       <div class="p-8 md:p-10 md:w-1/2 flex flex-col relative z-10">
         <div class="flex items-center gap-3 mb-6">
@@ -441,7 +444,7 @@
     </article>
 
     <!-- 02 · UERJ -->
-    <article class="reveal-scroll md:col-span-5 bg-[#18181B]/90 backdrop-blur-xl border border-white/5 rounded-[19px] overflow-hidden relative group hover:border-white/10 transition-colors duration-700 flex flex-col shadow-2xl shadow-black/80" data-reveal-delay="120">
+    <article class="reveal-scroll md:col-span-5 bg-[#18181B]/90 border border-white/5 rounded-[19px] overflow-hidden relative group hover:border-white/10 transition-colors duration-700 flex flex-col shadow-2xl shadow-black/80" data-reveal-delay="120">
       <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#6366F1]/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
       <a aria-label="Abrir o certificado de extensão da UERJ em tamanho real" class="block h-72 relative bg-black/40 border-b border-white/5 overflow-hidden" href="assets/experiencia/uerj-certificado.jpg" rel="noopener" target="_blank">
         <div aria-hidden="true" class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.12),transparent_70%)]"></div>
@@ -468,7 +471,7 @@
     </article>
 
     <!-- 03 · Stylee -->
-    <article class="reveal-scroll md:col-span-12 bg-[#18181B]/90 backdrop-blur-xl border border-white/5 rounded-[19px] overflow-hidden relative group hover:border-white/10 transition-colors duration-700 flex flex-col md:flex-row shadow-2xl shadow-black/80" data-reveal-delay="0">
+    <article class="reveal-scroll md:col-span-12 bg-[#18181B]/90 border border-white/5 rounded-[19px] overflow-hidden relative group hover:border-white/10 transition-colors duration-700 flex flex-col md:flex-row shadow-2xl shadow-black/80" data-reveal-delay="0">
       <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-r from-[#6366F1]/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
       <div class="p-8 md:p-12 md:w-6/12 lg:w-5/12 flex flex-col justify-center relative z-10">
         <div class="flex items-center gap-3 mb-6">
@@ -498,7 +501,7 @@
     </article>
 
     <!-- 04 · Asimov -->
-    <article class="reveal-scroll md:col-span-5 bg-[#18181B]/90 backdrop-blur-xl border border-white/5 rounded-[19px] overflow-hidden relative group hover:border-white/10 transition-colors duration-700 flex flex-col shadow-2xl shadow-black/80" data-reveal-delay="0">
+    <article class="reveal-scroll md:col-span-5 bg-[#18181B]/90 border border-white/5 rounded-[19px] overflow-hidden relative group hover:border-white/10 transition-colors duration-700 flex flex-col shadow-2xl shadow-black/80" data-reveal-delay="0">
       <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#6366F1]/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
       <div class="h-56 relative bg-black/40 border-b border-white/5 overflow-hidden">
         <canvas aria-hidden="true" class="absolute inset-0 w-full h-full" id="canvas-network" style="touch-action: none;"></canvas>
@@ -586,7 +589,7 @@
 
     <!-- 01 · Social Media -->
     <div class="reveal-scroll" data-reveal-delay="0">
-      <article class="svc-card group relative h-full p-3 rounded-[24px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col shadow-2xl shadow-black/80 overflow-hidden">
+      <article class="svc-card group relative h-full p-3 rounded-[24px] bg-[#18181B]/90 border border-white/5 flex flex-col shadow-2xl shadow-black/80 overflow-hidden">
         <div aria-hidden="true" class="svc-topbar absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#6366F1] to-transparent"></div>
         <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#6366F1]/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
@@ -679,7 +682,7 @@
 
     <!-- 02 · Automação (card em destaque, como o central da pricing do Site 2) -->
     <div class="reveal-scroll" data-reveal-delay="120">
-      <article class="svc-card group relative h-full p-3 rounded-[24px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col shadow-2xl shadow-black/80 overflow-hidden">
+      <article class="svc-card group relative h-full p-3 rounded-[24px] bg-[#18181B]/90 border border-white/5 flex flex-col shadow-2xl shadow-black/80 overflow-hidden">
         <div aria-hidden="true" class="svc-topbar absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#6366F1] to-transparent"></div>
         <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#6366F1]/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
@@ -772,7 +775,7 @@
 
     <!-- 03 · Tráfego pago -->
     <div class="reveal-scroll" data-reveal-delay="240">
-      <article class="svc-card group relative h-full p-3 rounded-[24px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 flex flex-col shadow-2xl shadow-black/80 overflow-hidden">
+      <article class="svc-card group relative h-full p-3 rounded-[24px] bg-[#18181B]/90 border border-white/5 flex flex-col shadow-2xl shadow-black/80 overflow-hidden">
         <div aria-hidden="true" class="svc-topbar absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#6366F1] to-transparent"></div>
         <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-[#6366F1]/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
@@ -922,7 +925,7 @@
 
   <!-- o que foi feito -->
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <article class="reveal-scroll rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 p-8 flex flex-col shadow-2xl shadow-black/80" data-reveal-delay="0">
+    <article class="reveal-scroll rounded-[19px] bg-[#18181B]/90 border border-white/5 p-8 flex flex-col shadow-2xl shadow-black/80" data-reveal-delay="0">
       <div class="flex items-center gap-3 mb-5">
         <iconify-icon class="text-xl text-[#6366F1]" icon="solar:users-group-rounded-linear" aria-hidden="true"></iconify-icon>
         <span class="text-xs font-mono tracking-widest text-zinc-500 uppercase">Social media</span>
@@ -930,7 +933,7 @@
       <h3 class="text-lg font-normal tracking-tight text-white mb-3">Presença diária nas redes</h3>
       <p class="text-sm font-light text-zinc-400 leading-relaxed">Gestão das redes sociais da empresa, criação de conteúdo e planejamento estratégico aplicados à rotina de uma operação industrial: linguagem técnica traduzida para o público certo, com calendário e pauta definidos.</p>
     </article>
-    <article class="reveal-scroll rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 p-8 flex flex-col shadow-2xl shadow-black/80" data-reveal-delay="120">
+    <article class="reveal-scroll rounded-[19px] bg-[#18181B]/90 border border-white/5 p-8 flex flex-col shadow-2xl shadow-black/80" data-reveal-delay="120">
       <div class="flex items-center gap-3 mb-5">
         <iconify-icon class="text-xl text-[#6366F1]" icon="solar:cpu-linear" aria-hidden="true"></iconify-icon>
         <span class="text-xs font-mono tracking-widest text-zinc-500 uppercase">Automação · N8N</span>
@@ -938,7 +941,7 @@
       <h3 class="text-lg font-normal tracking-tight text-white mb-3">Atendimento que não para</h3>
       <p class="text-sm font-light text-zinc-400 leading-relaxed">Implementação de fluxos automatizados no N8N, com atendimento via WhatsApp e e-mail: triagem dos contatos que chegam, respostas imediatas e encaminhamento organizado para a equipe.</p>
     </article>
-    <article class="reveal-scroll rounded-[19px] bg-[#18181B]/90 backdrop-blur-xl border border-white/5 p-8 flex flex-col shadow-2xl shadow-black/80" data-reveal-delay="240">
+    <article class="reveal-scroll rounded-[19px] bg-[#18181B]/90 border border-white/5 p-8 flex flex-col shadow-2xl shadow-black/80" data-reveal-delay="240">
       <div class="flex items-center gap-3 mb-5">
         <iconify-icon class="text-xl text-[#6366F1]" icon="solar:graph-up-linear" aria-hidden="true"></iconify-icon>
         <span class="text-xs font-mono tracking-widest text-zinc-500 uppercase">Tráfego pago</span>
@@ -950,7 +953,7 @@
 
   <!-- provas visuais: site e insights do Google Ads -->
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-    <figure class="reveal-scroll group relative rounded-[19px] overflow-hidden border border-white/5 bg-[#18181B]/90 backdrop-blur-xl shadow-2xl shadow-black/80" data-reveal-delay="0">
+    <figure class="reveal-scroll group relative rounded-[19px] overflow-hidden border border-white/5 bg-[#18181B]/90 shadow-2xl shadow-black/80" data-reveal-delay="0">
       <figcaption class="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-[#0f0f11]/80 backdrop-blur-md">
         <span aria-hidden="true" class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
         <span aria-hidden="true" class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
@@ -968,7 +971,7 @@
     </figure>
 
     <div class="flex flex-col gap-6">
-      <figure class="reveal-scroll group relative rounded-[19px] overflow-hidden border border-white/5 bg-[#18181B]/90 backdrop-blur-xl shadow-2xl shadow-black/80" data-reveal-delay="120">
+      <figure class="reveal-scroll group relative rounded-[19px] overflow-hidden border border-white/5 bg-[#18181B]/90 shadow-2xl shadow-black/80" data-reveal-delay="120">
         <figcaption class="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-[#0f0f11]/80 backdrop-blur-md">
           <span aria-hidden="true" class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
           <span aria-hidden="true" class="h-2.5 w-2.5 rounded-full bg-white/15"></span>
@@ -1003,7 +1006,7 @@
   </div>
 
   <!-- fechamento -->
-  <div class="reveal-scroll relative overflow-hidden rounded-[19px] border border-white/5 bg-[#18181B]/90 backdrop-blur-xl px-8 py-10 md:px-12 md:py-12 shadow-2xl shadow-black/80" data-reveal-delay="0">
+  <div class="reveal-scroll relative overflow-hidden rounded-[19px] border border-white/5 bg-[#18181B]/90 px-8 py-10 md:px-12 md:py-12 shadow-2xl shadow-black/80" data-reveal-delay="0">
     <div aria-hidden="true" class="absolute inset-0 opacity-[0.07]" style="background-image: linear-gradient(rgba(99,102,241,.6) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,.6) 1px, transparent 1px); background-size: 32px 32px;"></div>
     <div aria-hidden="true" class="absolute top-5 left-5 w-3 h-3 border-t border-l border-[#6366F1]/50"></div>
     <div aria-hidden="true" class="absolute top-5 right-5 w-3 h-3 border-t border-r border-[#6366F1]/50"></div>
@@ -1064,8 +1067,12 @@ function initHero() {
     if (!canvas) return;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const rect = canvas.getBoundingClientRect();
-    canvas.width = Math.max(1, Math.floor(rect.width * dpr));
-    canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+    const w = Math.max(1, Math.floor(rect.width * dpr));
+    const h = Math.max(1, Math.floor(rect.height * dpr));
+    // desempenho: não realoca o buffer se o tamanho não mudou (resizes da barra de endereço no mobile)
+    if (w === canvas.width && h === canvas.height) return;
+    canvas.width = w;
+    canvas.height = h;
     if (gl) gl.viewport(0, 0, canvas.width, canvas.height);
   }
 
@@ -1299,22 +1306,59 @@ initHero();
       setTimeout(initScrollParallax, 50);
       return;
     }
+    // desempenho: as posições são medidas só na carga e no resize; a cada quadro o cálculo usa apenas
+    // scrollY (sem getBoundingClientRect, que forçava layout em 19 elementos por quadro) e o loop
+    // dorme quando não há rolagem nem movimento pendente
     const layers = gsap.utils.toArray("[data-scroll-speed]").map((el) => ({
       el,
       speed: parseFloat(el.dataset.scrollSpeed) || 0,
+      center: 0,
       current: 0,
       setY: gsap.quickSetter(el, "y", "px")
     }));
-    gsap.ticker.add(() => {
-      const vh = window.innerHeight;
+    let vh = window.innerHeight;
+    const measure = () => {
+      vh = window.innerHeight;
       layers.forEach((l) => {
         const r = l.el.parentElement.getBoundingClientRect();
-        if (r.bottom < -vh || r.top > vh * 2) return;
-        const progress = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh / 2) / vh));
-        l.current += (progress * l.speed - l.current) * 0.08;
-        l.setY(l.current);
+        l.center = r.top + window.scrollY + r.height / 2;
       });
-    });
+    };
+    measure();
+    window.addEventListener("load", measure);
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => { measure(); wake(); }, 150);
+    }, { passive: true });
+
+    let active = false;
+    const tick = () => {
+      const y = window.scrollY;
+      let moving = false;
+      layers.forEach((l) => {
+        const offset = l.center - y;
+        if (offset < -vh || offset > vh * 2) return;
+        const progress = Math.max(-1, Math.min(1, (offset - vh / 2) / vh));
+        const delta = progress * l.speed - l.current;
+        if (Math.abs(delta) > 0.05) {
+          l.current += delta * 0.08;
+          l.setY(l.current);
+          moving = true;
+        }
+      });
+      if (!moving) {
+        gsap.ticker.remove(tick);
+        active = false;
+      }
+    };
+    function wake() {
+      if (active) return;
+      active = true;
+      gsap.ticker.add(tick);
+    }
+    window.addEventListener("scroll", wake, { passive: true });
+    wake();
   }
   if (!reduced) initScrollParallax();
 })();
