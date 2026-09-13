@@ -97,6 +97,8 @@
   /* floatBubble (Site 1 · custom-animations.css), usado nos logos flutuantes */
   @keyframes floatBubble { 0% { transform: translateY(0) scale(1); opacity: .7 } 100% { transform: translateY(-14px) scale(1.05); opacity: 1 } }
   .reveal-scroll { opacity: 0; }
+  /* durante o atraso escalonado o elemento já fica no ponto de partida da entrada (sem salto) */
+  .reveal-scroll.animate-fade-in-up { animation-fill-mode: both; }
   /* glass-dark (Site 1 · index-BIISZeGo.css) */
   .glass-dark { background: #ffffff0d; border: 1px solid rgba(255,255,255,.06); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 16px; }
   .logo-mono { filter: brightness(0) invert(1); }
@@ -965,7 +967,7 @@
         <iconify-icon class="text-sm text-zinc-600" icon="solar:global-linear" aria-hidden="true"></iconify-icon>
       </figcaption>
       <div class="relative overflow-hidden bg-black/40">
-        <img alt="Print da página inicial do site desenvolvido para a IA Manutenção de Máquinas e Equipamentos" class="w-full h-auto transition-transform duration-1000 ease-out group-hover:scale-[1.04]" decoding="async" loading="lazy" src="assets/portfolio/ia-site.jpg"/>
+        <img alt="Print da página inicial do site desenvolvido para a IA Manutenção de Máquinas e Equipamentos" class="w-full h-auto transition-transform duration-1000 ease-out group-hover:scale-[1.04]" decoding="async" height="794" loading="lazy" src="assets/portfolio/ia-site.jpg" width="1600"/>
         <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-[#18181B]/60 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-700"></div>
       </div>
       <div class="px-5 py-4 border-t border-white/5">
@@ -983,7 +985,7 @@
           <iconify-icon class="text-sm text-zinc-600" icon="solar:chart-2-linear" aria-hidden="true"></iconify-icon>
         </figcaption>
         <div class="relative overflow-hidden bg-white">
-          <img alt="Print da lista de campanhas do Google Ads do cliente, com a campanha de Pesquisa Manutenção de Máquinas | qualificada: pontuação de otimização de 85,7%, 11 conversões, taxa de conversão de 20,75%, custo por conversão de R$ 16,14, 53 cliques e CTR de 9,76%" class="w-full h-auto transition-transform duration-1000 ease-out group-hover:scale-[1.04]" decoding="async" loading="lazy" src="assets/portfolio/ia-ads.png"/>
+          <img alt="Print da lista de campanhas do Google Ads do cliente, com a campanha de Pesquisa Manutenção de Máquinas | qualificada: pontuação de otimização de 85,7%, 11 conversões, taxa de conversão de 20,75%, custo por conversão de R$ 16,14, 53 cliques e CTR de 9,76%" class="w-full h-auto transition-transform duration-1000 ease-out group-hover:scale-[1.04]" decoding="async" height="624" loading="lazy" src="assets/portfolio/ia-ads.png" width="2848"/>
         </div>
         <div class="px-5 py-4 border-t border-white/5">
           <p class="text-[11px] font-mono uppercase tracking-widest text-zinc-500">Pesquisa · 14 ago. a 12 set. 2026</p>
@@ -1293,13 +1295,22 @@ initHero();
   if (reduced || !("IntersectionObserver" in window)) {
     items.forEach((el) => { el.style.opacity = 1; });
   } else {
+    // cada elemento revela uma única vez: marca o estado e para de observar antes de animar,
+    // e o will-change só vale durante a entrada (liberado no animationend do próprio elemento)
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
         const el = entry.target;
-        el.style.animationDelay = (el.dataset.revealDelay || 0) + "ms";
-        el.classList.add("animate-fade-in-up");
+        if (!entry.isIntersecting || el.dataset.revealed) return;
+        el.dataset.revealed = "1";
         io.unobserve(el);
+        el.style.animationDelay = (el.dataset.revealDelay || 0) + "ms";
+        el.style.willChange = "transform, opacity";
+        el.addEventListener("animationend", function done(e) {
+          if (e.target !== el) return;
+          el.style.willChange = "";
+          el.removeEventListener("animationend", done);
+        });
+        el.classList.add("animate-fade-in-up");
       });
     }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
     items.forEach((el) => io.observe(el));
