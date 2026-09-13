@@ -5,17 +5,22 @@ const setupCanvas = (id, renderFn) => {
   const canvas = document.getElementById(id);
   if (!canvas) return;
   const ctx = canvas.getContext('2d', { alpha: true });
-  let w, h, time = 0;
+  let w = 0, h = 0, time = 0;
+  let visible = false, running = false;
+  // desempenho: só realoca o canvas quando o tamanho do card muda de fato
   const resize = () => {
     const rect = canvas.parentElement.getBoundingClientRect();
+    if (rect.width === w && rect.height === h) return;
     w = rect.width; h = rect.height;
     const dpr = window.devicePixelRatio || 1;
     canvas.width = w * dpr; canvas.height = h * dpr;
-    ctx.scale(dpr, dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   };
-  window.addEventListener('resize', resize);
+  window.addEventListener('resize', resize, { passive: true });
   resize();
   const loop = () => {
+    // desempenho: a animação para quando o card sai da tela e volta ao reaparecer
+    if (!visible) { running = false; return; }
     time += 0.01;
     ctx.clearRect(0, 0, w, h);
     ctx.save();
@@ -24,7 +29,14 @@ const setupCanvas = (id, renderFn) => {
     ctx.restore();
     requestAnimationFrame(loop);
   };
-  loop();
+  new IntersectionObserver((entries) => {
+    visible = entries.some((e) => e.isIntersecting);
+    if (visible && !running) {
+      running = true;
+      resize();
+      requestAnimationFrame(loop);
+    }
+  }).observe(canvas);
 };
 
 setupCanvas('canvas-core', (ctx, t) => {

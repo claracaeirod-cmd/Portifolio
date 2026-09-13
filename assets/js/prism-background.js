@@ -41,7 +41,9 @@ function initPrism(container, options = {}) {
   const HOVSTR = Math.max(0, hoverStrength || 1);
   const INERT = Math.max(0, Math.min(1, inertia || 0.12));
 
-  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  // desempenho: o raymarch de 100 passos roda em tela cheia a cada quadro; como o resultado é um
+  // brilho suave com granulado, renderizar com densidade 1 reduz até 4x o custo sem perda visível
+  const dpr = Math.min(1, window.devicePixelRatio || 1);
   const renderer = new Renderer({
     dpr,
     alpha: transparent,
@@ -219,9 +221,15 @@ function initPrism(container, options = {}) {
   });
   const mesh = new Mesh(gl, { geometry, program });
 
+  // só realoca o buffer quando o tamanho muda de fato (no celular a barra de endereço
+  // dispara vários resizes durante a rolagem)
+  let lastW = 0, lastH = 0;
   const resize = () => {
     const w = container.clientWidth || 1;
     const h = container.clientHeight || 1;
+    if (w === lastW && h === lastH) return;
+    lastW = w;
+    lastH = h;
     renderer.setSize(w, h);
     iResBuf[0] = gl.drawingBufferWidth;
     iResBuf[1] = gl.drawingBufferHeight;
