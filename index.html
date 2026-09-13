@@ -16,7 +16,14 @@
 <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 <style>
   /* ---- Site 2 · base.css ---- */
+  html { background-color: #000000; }
   body { font-family: 'Inter', sans-serif; background-color: #000000; }
+  /* fundo animado em telas em pé: o prisma é dimensionado pela altura do container e, no celular,
+     virava um brilho claro sobre a tela inteira; aqui ele mantém a proporção do desktop (1440×900),
+     como uma faixa na base, e o resto da tela fica sobre o preto */
+  @media (max-aspect-ratio: 1/1) {
+    #prism-container { top: auto; height: 62.5vw; }
+  }
   .font-mono { font-family: 'JetBrains Mono', monospace; }
   .font-condensed { font-family: 'Barlow Condensed', Impact, sans-serif; }
 
